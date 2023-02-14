@@ -17,7 +17,7 @@ router.get('/', function(req, res, next) {
   connection.query("SELECT grade FROM  user WHERE id="+queryData['id']+"" ,function(error,results) {
       console.log(results);
   var json_data = JSON.parse(JSON.stringify(results));
-      connection.query('SELECT * FROM subject WHERE grade="'+ json_data['grade']+'"', function (error, result) {
+      connection.query('SELECT * FROM subject WHERE grade="'+ json_data[0]['grade']+'"', function (error, result) {
           console.log(result);
           res.json(result);
       });
