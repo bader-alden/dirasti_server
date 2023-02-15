@@ -39,6 +39,14 @@ router.get('/course', function(req, res, next) {
        res.json(result);
     });
 })
+router.get('/part', function(req, res, next) {
+    var queryData = url.parse(req.url, true).query
+    connection.query("SELECT * FROM part WHERE subject='"+queryData['subject']+"' and grade='"+queryData['grade']+"'and teacher_name='"+queryData['teacher_name']+"' شى", function (error, result) {
+       console.log(error);
+       console.log(result);
+       res.json(result);
+    });
+})
 
 
 module.exports = router;
