@@ -26,7 +26,7 @@ router.get('/', function(req, res, next) {
 
 router.get('/index', function(req, res, next) {
     var queryData = url.parse(req.url, true).query;
-          connection.query("SELECT * FROM course WHERE subject="+queryData[0]['subject']+" and grade="+queryData[0]['grade']+"", function (error, resulte) {
+          connection.query("SELECT * FROM course WHERE subject="+queryData['subject']+" and grade="+queryData['grade']+"", function (error, resulte) {
        console.log(resulte);
        res.json(resulte);
     });
