@@ -14,7 +14,7 @@ connection.connect();
 
 router.get('/', function(req, res, next) {
   const queryData = url.parse(req.url, true).query;
-  connection.query("SELECT grade FROM  user WHERE id="+queryData['id']+"" ,function(error,results) {
+  connection.query("SELECT grade FROM  user WHERE id='"+queryData['id']+"'" ,function(error,results) {
       console.log(results);
   var json_data = JSON.parse(JSON.stringify(results));
       connection.query('SELECT * FROM subject WHERE grade="'+ json_data[0]['grade']+'"', function (error, result) {
@@ -26,14 +26,14 @@ router.get('/', function(req, res, next) {
 
 router.get('/teatcher', function(req, res, next) {
     var queryData = url.parse(req.url, true).query;
-          connection.query("SELECT * FROM  teatcher WHERE subject="+queryData['subject']+" and grade="+queryData['grade']+"", function (error, resulte) {
+          connection.query("SELECT * FROM  teatcher WHERE subject='"+queryData['subject']+"' and grade='"+queryData['grade']+"'", function (error, resulte) {
        console.log(resulte);
        res.json(resulte);
     });
 })
 router.get('/course', function(req, res, next) {
     var queryData = url.parse(req.url, true).query
-    connection.query("SELECT * FROM course WHERE subject="+queryData['subject']+" and grade="+queryData['grade']+"and teacher_name="+queryData['teacher_name']+"", function (error, result) {
+    connection.query("SELECT * FROM course WHERE subject='"+queryData['subject']+"' and grade='"+queryData['grade']+"'and teacher_name='"+queryData['teacher_name']+"'", function (error, result) {
        console.log(error);
        console.log(result);
        res.json(result);
