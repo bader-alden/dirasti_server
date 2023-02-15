@@ -24,7 +24,7 @@ router.get('/', function(req, res, next) {
   })
   });
 
-router.get('/index', function(req, res, next) {
+router.get('/teatcher', function(req, res, next) {
     var queryData = url.parse(req.url, true).query;
           connection.query("SELECT * FROM  teatcher WHERE subject="+queryData['subject']+" and grade="+queryData['grade']+"", function (error, resulte) {
        console.log(resulte);
