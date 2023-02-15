@@ -32,10 +32,11 @@ router.get('/teatcher', function(req, res, next) {
     });
 })
 router.get('/course', function(req, res, next) {
-    var queryData = url.parse(req.url, true).query;
-          connection.query("SELECT * FROM course WHERE subject="+queryData['subject']+" and grade="+queryData['grade']+"and teacher_name="+queryData['grade']+"", function (error, resulte) {
-       console.log(resulte);
-       res.json(resulte);
+    var queryData = url.parse(req.url, true).query
+    connection.query("SELECT * FROM course WHERE subject="+queryData['subject']+" and grade="+queryData['grade']+"and teacher_name="+queryData['teacher_name']+"", function (error, result) {
+       console.log(error);
+       console.log(result);
+       res.json(result);
     });
 })
 
