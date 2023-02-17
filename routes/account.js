@@ -24,8 +24,8 @@ router.post('/login', function(req, res, next) {
     //         console.log(error);
     //         res.json(results);
        } else  {
-        res.json("notfound");
-        }
+        res.json("notfound >>>>> Contact technical support ");
+       }
     // });
       //`id`, `name`, `email`, `is_male`, `course_file`, `grade`, `mobile_id`, `secret code`
 });
@@ -55,7 +55,17 @@ router.post('/login', function(req, res, next) {
 
 router.post('/update_account', function(req, res, next) {
     var queryData=url.parse(req.url,true).query;
-    connection.query("UPDATE users SET email = '"+queryData['email']+"', mobile_id= '"+queryData['mobile_id']+"', password = '"+queryData['password']+"',grade= '"+queryData['grade']+"' WHERE id="+queryData['id']+" ",function(error,results,fields){
+    connection.query("UPDATE users SET email = '"+queryData['email']+"', mobile_id= '"+queryData['mobile_id']+"', is_male= '"+queryData['is_male']+"',grade= '"+queryData['grade']+"' WHERE secret code="+queryData['secret code']+" ",function(error,results,fields){
+        if(!error){
+            res.json(true);
+        }else{
+            res.json(false);
+        }
+    } );
+  
+  router.post('/delete', function(req, res, next) {
+    var queryData=url.parse(req.url,true).query;
+    connection.query("UPDATE users SET email = '"+queryData['email']+"', mobile_id= '"+queryData['mobile_id']+"', is_male= '"+queryData['is_male']+"',grade= '"+queryData['grade']+"' WHERE secret code="+queryData['secret code']+" ",function(error,results,fields){
         if(!error){
             res.json(true);
         }else{
