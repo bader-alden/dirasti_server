@@ -16,11 +16,13 @@ router.post('/login', function(req, res, next) {
     connection.query( "SELECT * FROM users WHERE secret_code="+queryData['secret_code']+" " ,function(error,results,fields){
         console.log(queryData);
         console.log(error);
+      if(secret_code= restart)
+    connection.query("UPDATE users SET email = '"+queryData['email']+"', mobile_id= '"+queryData['mobile_id']+"', is_male= '"+queryData['is_male']+"',grade= '"+queryData['grade']+"' WHERE secret_code="+queryData['secret_code']+" ",function(error,results,fields){
         console.log(results);
-    if (results!=null){
-    }else{
-     res.json("notfound >>>>> Contact technical support");
-       }
+    // if (results!=null){
+    // }else{
+    //  res.json("notfound >>>>> Contact technical support");
+    //    }
     });
     });
   
