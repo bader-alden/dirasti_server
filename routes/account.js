@@ -13,12 +13,15 @@ connection.connect();
 //تسجيل دخول 
 router.post('/login', function(req, res, next) {
     var queryData=url.parse(req.url,true).query;
-      connection.query("SELECT mobile_id FROM users WHERE mobile_id="+queryData['mobile_id']+" ",function(error,resultts,fields){
+      connection.query("SELECT * FROM users WHERE mobile_id="+queryData['mobile_id']+" ",function(error,resultts,fields){
   if(resultts!=null){
     connection.query("SELECT * FROM users WHERE secret_code="+queryData['secret_code']+" ",function(error,results,fields){
-        console.log(error);
-        console.log(results);
-       console.log(200);
+    
+      if  (!null){
+        console.log(200);
+      }else{
+       console.log(404);
+      }
          });
     if (queryData['secret_code']=='restart'){
     connection.query("UPDATE users SET secret_code="+queryData['secret_code']+" WHERE mobile_id="+queryData['mobile_id']+" ",function(error,results,fields){
