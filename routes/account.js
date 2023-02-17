@@ -15,24 +15,24 @@ router.post('/login', function(req, res, next) {
     var queryData=url.parse(req.url,true).query;
       connection.query("SELECT * FROM users WHERE mobile_id="+queryData['mobile_id']+" ",function(error,resultts,fields){
   if(resultts!=null){
-    if (queryData['secret_code']=='restart'){
-       connection.query("UPDATE users SET secret_code="+queryData['secret_code']+" WHERE mobile_id="+queryData['mobile_id']+" ",function(error,results,fields){
-        console.log(results);
-       console.log(200);
-            });
-    }
-    var json_data = JSON.parse(JSON.stringify(resultts));
-    if (queryData['secret_code']==json_data['secret_code']){
-        console.log(200);
-    } if  (queryData['secret_code']!=json_data['secret_code']){
-        console.log(404);
-      }
- }else{  
-         console.log(404);
-         res.json(404);
- }
+//           var json_data = JSON.parse(JSON.stringify(resultts));
+//     if (json_data['secret_code']=='restart'){  
+//        connection.query("UPDATE users SET secret_code="+queryData['secret_code']+" WHERE mobile_id="+queryData['mobile_id']+" ",function(error,results,fields){
+//         console.log(results);
+//        console.log(200);
+//             });
+//     }
+//     if (queryData['secret_code']==json_data['secret_code']){
+//         console.log(200);
+//     } if  (queryData['secret_code']!=json_data['secret_code']){
+//         console.log(404);
+//       }
+//  }else{  
+//          console.log(404);
+//          res.json(404);
+// }
     
-     });
+   });
     });
 router.post('/update_account', function(req, res, next) {
     var queryData=url.parse(req.url,true).query;
