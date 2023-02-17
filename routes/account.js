@@ -52,7 +52,7 @@ router.get('/check_login', function(req, res, next) {
 
 router.post('/update_account', function(req, res, next) {
     var queryData=url.parse(req.url,true).query;
-    connection.query(" UPDATE users SET email = '"+queryData['email']+"', mobile_id= '"+queryData['mobile_id']+"', password = '"+queryData['password']+"',grade= '"+queryData['grade']+"' WHERE id="+queryData['id']+" ",function(error,results,fields){
+    connection.query("UPDATE users SET email = '"+queryData['email']+"', mobile_id= '"+queryData['mobile_id']+"', password = '"+queryData['password']+"',grade= '"+queryData['grade']+"' WHERE id="+queryData['id']+" ",function(error,results,fields){
         if(!error){
             res.json(true);
         }else{
@@ -66,7 +66,7 @@ router.post('/update_account', function(req, res, next) {
 router.post('/signin', function(req, res, next) {
     var queryData=url.parse(req.url,true).query;
     if(queryData['email']!=null && queryData['password']!=null&& queryData['grade']!=null){
-            connection.query("INSERT INTO user ( `name`, `email`, `is_male`,`grade`,'mobile_id','password') VALUES ('"+queryData['name']+"','"+queryData['email']+"','"+queryData['is_male']+"','"+queryData['grade']+"', '"+queryData['mobile_id']+"', '"+queryData['password']+"',' ',' ')",function(error,results,fields){
+            connection.query("INSERT INTO user (`name`, `email`, `is_male`,`grade`,'mobile_id','password') VALUES ('"+queryData['name']+"','"+queryData['email']+"','"+queryData['is_male']+"','"+queryData['grade']+"', '"+queryData['mobile_id']+"', '"+queryData['password']+"',' ',' ')",function(error,results,fields){
             console.log(error)
             console.log(results)
             });
