@@ -13,15 +13,17 @@ connection.connect();
 //تسجيل دخول 
 router.post('/login', function(req, res, next) {
     var queryData=url.parse(req.url,true).query;
- if(queryData['mobile_id']==mobile_id){
+      connection.query("SELECT mobile_id FROM users WHERE mobile_id="+queryData['mobile_id']+" ",function(error,resultts,fields){
+  if(resultts!=null){
     connection.query("SELECT * FROM users WHERE secret_code="+queryData['secret_code']+" ",function(error,results,fields){
         console.log(error);
         console.log(results);
-       console.log(true);
+       console.log(200);
          });
     if (queryData['secret_code']=='restart'){
     connection.query("UPDATE users SET secret_code="+queryData['secret_code']+" WHERE mobile_id="+queryData['mobile_id']+" ",function(error,results,fields){
         console.log(results);
+       console.log(200);
     });
   }
  }else{  
@@ -29,7 +31,7 @@ router.post('/login', function(req, res, next) {
          res.json(404);
         
         }
-    
+     });
    });
 router.post('/update_account', function(req, res, next) {
     var queryData=url.parse(req.url,true).query;
