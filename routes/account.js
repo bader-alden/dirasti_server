@@ -11,20 +11,23 @@ var connection = mysql.createConnection({
         database: 'derasti'
 });
 connection.connect();
+//تسجيل دخول 
 router.post('/login', function(req, res, next) {
     var queryData=url.parse(req.url,true).query;
-    connection.query( "SELECT * FROM users WHERE mobile_id="+queryData['mobile_id']+" " ,function(error,results,fields){
+    connection.query( "SELECT * FROM users WHERE secret code="+queryData['secret code']+" " ,function(error,results,fields){
         console.log(queryData);
+        console.log(error);
         console.log(results);
-        if (results!=null){
-            connection.query(" UPDATE users SET gsm_token = '"+queryData['gsm_token']+"', gsm_token2 = '"+queryData['gsm_token2']+"' WHERE mobile_id="+queryData['mobile_id']+" ")
-            console.log(results);
-            console.log(error);
-            res.json(results);
-        } else  {
-            res.json("notfound");
+      if (results!=null){
+    // connection.query(" UPDATE users SET gsm_token = '"+queryData['gsm_token']+"', gsm_token2 = '"+queryData['gsm_token2']+"' WHERE mobile_id="+queryData['mobile_id']+" ")
+    //         console.log(results);
+    //         console.log(error);
+    //         res.json(results);
+       } else  {
+        res.json("notfound");
         }
-    });
+    // });
+      //`id`, `name`, `email`, `is_male`, `course_file`, `grade`, `mobile_id`, `secret code`
 });
 // router.post('/loginid', function(req, res, next) {
 //     var queryData=url.parse(req.url,true).query;
@@ -63,10 +66,11 @@ router.post('/update_account', function(req, res, next) {
 
 
 });
+//انشاء حساب 
 router.post('/signin', function(req, res, next) {
     var queryData=url.parse(req.url,true).query;
     if(queryData['email']!=null && queryData['password']!=null&& queryData['grade']!=null){
-            connection.query("INSERT INTO user (`name`, `email`, `is_male`,`grade`,'mobile_id','password') VALUES ('"+queryData['name']+"','"+queryData['email']+"','"+queryData['is_male']+"','"+queryData['grade']+"', '"+queryData['mobile_id']+"', '"+queryData['password']+"',' ',' ')",function(error,results,fields){
+            connection.query("INSERT INTO user (`name`, `email`, `is_male`,`grade`,'mobile_id','secret code') VALUES ('"+queryData['name']+"','"+queryData['email']+"','"+queryData['is_male']+"','"+queryData['grade']+"', '"+queryData['mobile_id']+"', '"+queryData['secret code']+"',' ',' ')",function(error,results,fields){
             console.log(error)
             console.log(results)
             });
