@@ -26,29 +26,29 @@ router.post('/login', function(req, res, next) {
         }
     });
 });
-router.post('/loginid', function(req, res, next) {
-    var queryData=url.parse(req.url,true).query;
-    connection.query( "SELECT * FROM users WHERE id="+queryData['id']+" " ,function(error,results,fields){
-        if (results!=null){
-            console.log(results);
-            res.json(results);
-        } else  {
-            res.json("notfound");
-        }
-    });//login
-});
-router.get('/check_login', function(req, res, next) {
-    var queryData=url.parse(req.url,true).query;
-    connection.query( "SELECT `mobile_id` FROM users WHERE mobile_id="+queryData['mobile_id']+" " ,function(error,results,fields){
-        console.log(results);
-        console.log(queryData['mobile_id']);
-        if (results!=null && results.length !== 0){
-            res.json(true);
-        } else  {
-            res.json(false);
-        }
-    });
-});
+// router.post('/loginid', function(req, res, next) {
+//     var queryData=url.parse(req.url,true).query;
+//     connection.query( "SELECT * FROM users WHERE id="+queryData['id']+" " ,function(error,results,fields){
+//         if (results!=null){
+//             console.log(results);
+//             res.json(results);
+//         } else  {
+//             res.json("notfound");
+//         }
+//     });//login
+// });
+// router.get('/check_login', function(req, res, next) {
+//     var queryData=url.parse(req.url,true).query;
+//     connection.query( "SELECT `mobile_id` FROM users WHERE mobile_id="+queryData['mobile_id']+" " ,function(error,results,fields){
+//         console.log(results);
+//         console.log(queryData['mobile_id']);
+//         if (results!=null && results.length !== 0){
+//             res.json(true);
+//         } else  {
+//             res.json(false);
+//         }
+//     });
+// });
 
 router.post('/update_account', function(req, res, next) {
     var queryData=url.parse(req.url,true).query;
