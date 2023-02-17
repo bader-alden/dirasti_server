@@ -21,9 +21,10 @@ router.post('/login', function(req, res, next) {
        console.log(200);
             });
     }
-    if (queryData['secret_code']==JSON.parse(JSON.stringify(results)[secret_code]){
+    var json_data = JSON.parse(JSON.stringify(resultts));
+    if (queryData['secret_code']==json_data['secret_code']){
         console.log(200);
-    } if  (queryData['secret_code']!=secret_code){
+    } if  (queryData['secret_code']!=json_data['secret_code']){
         console.log(404);
       }
  }else{  
