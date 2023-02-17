@@ -19,10 +19,6 @@ router.post('/login', function(req, res, next) {
       if(queryData['secret_code']=='restart'){
     connection.query("UPDATE users SET secret_code="+queryData['secret_code']+" WHERE mobile_id="+queryData['mobile_id']+" ",function(error,results,fields){
         console.log(results);
-    // if (results!=null){
-    // }else{
-    //  res.json("notfound >>>>> Contact technical support");
-       
     });
       }
     });
