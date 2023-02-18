@@ -48,7 +48,7 @@ router.post('/update_account', function(req, res, next) {
 
 router.post('/delete_account', function(req, res, next) {
     var queryData=url.parse(req.url,true).query;
-    connection.query("DELETE FROM  user  WHERE secret_code="+queryData['secret_code']+" ",function(error,results,fields){
+    connection.query("DELETE FROM  user  WHERE secret_code='"+queryData['secret_code']+"' ",function(error,results,fields){
         if(!error){
           res.json(true);
         }else{
