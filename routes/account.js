@@ -71,7 +71,7 @@ router.post('/signin', function(req, res, next) {
     connection.query("INSERT INTO user (`name`, `email`, `is_male`, `course_file`,`grade`,`mobile_id`,`secret_code`) VALUES ('"+queryData['name']+"','"+queryData['email']+"','"+queryData['is_male']+"',' ','"+queryData['grade']+"', '"+queryData['mobile_id']+"', '"+queryData['secret_code']+"')",function(error,results,fields){
          console.log(error)
          console.log(results)
-         res.json('welcome in derasty app');
+         res.json('welcome in dirasty app');
     });
   }else {
     res.json('error3');
