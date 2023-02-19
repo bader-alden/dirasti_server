@@ -14,16 +14,12 @@ connection.connect();
 router.post('/login', function(req, res, next) {
   var queryData=url.parse(req.url,true).query;
       connection.query("SELECT * FROM user WHERE mobile_id='"+queryData['mobile_id']+"' ",function(error,resultts,fields){
-        console.log(resultts);
-    if(resultts!=null){
-  var json_data = JSON.parse(JSON.stringify(resultts));
-      console.log(json_data['secret_code'])  //شوفي هاد بlogs
-      console.log(json_data['secret_code'])  //شوفي هاد بlogs
-      console.log(json_data['secret_code'])  //شوفي هاد بlogs
-    //undefined
-      //شفتيه
-      if (json_data['secret_code']=='restart'){  
-       connection.query("UPDATE user SET secret_code='"+queryData['secret_code']+"' WHERE mobile_id='"+queryData['mobile_id']+"' ",function(error,results,fields){
+        console.log(resultts);                                       
+    if(resultts!=null){                                              
+  var json_data = JSON.parse(JSON.stringify(resultts));             
+      console.log(json_data[0]['secret_code'])   //يلا غيري الباقي  
+      if (json_data['secret_code']=='restart'){  // تمام جاب restart 
+       connection.query("UPDATE user SET secret_code='"+queryData['secret_code']+"' WHERE mobile_id='"+queryData[0]['mobile_id']+"' ",function(error,results,fields){
         console.log(results);
        console.log(200);
          res.json("bravvvvvo best🔥🔥🔥")
