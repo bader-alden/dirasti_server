@@ -21,16 +21,22 @@ router.post('/login', function(req, res, next) {
        connection.query("UPDATE user SET secret_code='"+queryData['secret_code']+"' WHERE mobile_id='"+queryData['mobile_id']+"' ",function(error,results,fields){
         console.log(results);
        console.log(200);
+         res.json("bravvvvvo best🔥🔥🔥")
+         
             });
     }
     if (queryData['secret_code']==json_data['secret_code']){
         console.log(200);
+      
+      //رجعيلي المعلومات تبع الحساب
+      //هون
     }if  (queryData['secret_code']!=json_data['secret_code']){
         console.log(404);
+        res.status(404);
       }
  }else{  
          console.log(404);
-         res.json(404);
+         res.status(404);
  }
     
      });
