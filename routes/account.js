@@ -17,7 +17,12 @@ router.post('/login', function(req, res, next) {
         console.log(resultts);
     if(resultts!=null){
   var json_data = JSON.parse(JSON.stringify(resultts));
-    if (json_data['secret_code']=='restart'){  
+      console.log(json_data['secret_code'])  //شوفي هاد بlogs
+      console.log(json_data['secret_code'])  //شوفي هاد بlogs
+      console.log(json_data['secret_code'])  //شوفي هاد بlogs
+    //undefined
+      //شفتيه
+      if (json_data['secret_code']=='restart'){  
        connection.query("UPDATE user SET secret_code='"+queryData['secret_code']+"' WHERE mobile_id='"+queryData['mobile_id']+"' ",function(error,results,fields){
         console.log(results);
        console.log(200);
@@ -27,15 +32,15 @@ router.post('/login', function(req, res, next) {
     }
     if (queryData['secret_code']==json_data['secret_code']){
         console.log(200);
-      
+         res.json(resultts);
       //رجعيلي المعلومات تبع الحساب
       //هون
-    }if  (queryData['secret_code']!=json_data['secret_code']){
+    }if  (queryData['secret_code']!=json_data['secret_code']&&json_data['secret_code']!='restart'){
         console.log(404);
         res.status(404);
       }
  }else{  
-         console.log(404);
+         console.log(5555);
          res.status(404);
  }
     
