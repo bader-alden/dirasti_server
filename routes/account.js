@@ -65,7 +65,7 @@ router.post('/delete_account', function(req, res, next) {
 //انشاء حساب 
 router.post('/signin', function(req, res, next) {
     var queryData=url.parse(req.url,true).query;
-    connection.query("INSERT INTO user (`name`, `email`, `is_male`,`grade`,'mobile_id','secret_code') VALUES ('"+queryData['name']+"','"+queryData['email']+"','"+queryData['is_male']+"','"+queryData['grade']+"', '"+queryData['mobile_id']+"', '"+queryData['secret_code']+"',' ',' ')",function(error,results,fields){
+    connection.query("INSERT INTO user (`name`, `email`, `is_male`,`course_file`,`grade`,'mobile_id','secret_code') VALUES ('"+queryData['name']+"','"+queryData['email']+"','"+queryData['is_male']+"','"+queryData['course_file']+"','"+queryData['grade']+"', '"+queryData['mobile_id']+"', '"+queryData['secret_code']+"')",function(error,results,fields){
          console.log(error)
          console.log(results) 
     });
