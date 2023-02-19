@@ -6,6 +6,7 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var accountRouter = require('./routes/account');
 var usersRouter = require('./routes/users');
+var coponsRouter = require('./routes/copons');
 var app = express();
 const mysql = require('mysql');
 var server = app.listen((3000),()=>{
@@ -31,7 +32,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/account', accountRouter);
-
+app.use('/copons', coponsRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
