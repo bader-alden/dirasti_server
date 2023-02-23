@@ -50,8 +50,10 @@ router.get('/part', function(req, res, next) {
      var m=t[0].split("|")[0]
       console.log(t);    
       console.log(m);
-       res.json(result);
+       res.json(resultt);
     });            //صح ؟
 })
   });
+
+//ملك خاص ل اسراء 🧿
 module.exports = router;
