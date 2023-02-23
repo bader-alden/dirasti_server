@@ -44,12 +44,14 @@ router.get('/part', function(req, res, next) {
     connection.query("SELECT * FROM part WHERE subject='"+queryData['subject']+"' and grade='"+queryData['grade']+"'and teacher_name='"+queryData['teacher_name']+"' and course='"+queryData['course']+"'", function (error, result) {
        console.log(error);
        console.log(result);
-   connection.query("SELECT list_cours` FROM copon WHERE 1", function (error, resultt) {
-      console.log(result);
-      console.log(result);
+   connection.query("SELECT `list_cours` FROM copon WHERE id='"+queryData['id']+"'", function (error, resultt) {
+     var json_data = JSON.parse(JSON.stringify(resultt))
+    var t = json_data.split(",")
+     var m=t[0].split("|")[0].substring(1)
+      console.log(t);    
+      console.log(m);
        res.json(result);
     });
 })
-
-
+  });
 module.exports = router;
