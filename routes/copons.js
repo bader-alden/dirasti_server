@@ -13,7 +13,7 @@ connection.connect();
 
 router.post('/', function(req, res, next) {
     var queryData=url.parse(req.url,true).query;
-    connection.query("SELECT * FROM `copon` WHERE name='"+queryData['name']+"' ",function(error,results,fields){
+    connection.query("SELECT * FROM `copon` WHERE name_copon='"+queryData['name_copon']+"' ",function(error,results,fields){
       if(!error){
        console.log(results)
      var json_data = JSON.parse(JSON.stringify(results[0]));         
@@ -21,8 +21,8 @@ router.post('/', function(req, res, next) {
       if (json_data['is_open']=='0'){
     connection.query("INSERT INTO `user`(`course_file`) VALUES ('"+queryData['name_copon']+"') WHERE id='"+queryData['id']+"' ",function(error,resullts,fields){
          console.log(resullts)
-    });
-          connection.query("UPDATE copon SET `is_open`='[1]'  WHERE id='"+queryData['id']+"' ",function(error,resullts,fields){
+    });      //هون شو بدي اكتب 
+      connection.query("UPDATE copon SET `is_open`='[1]'  WHERE id='"+queryData['id']+"' ",function(error,resullts,fields){
        });
       }else{
          res.json('error4');
