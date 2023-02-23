@@ -19,7 +19,7 @@ router.post('/', function(req, res, next) {
      var json_data = JSON.parse(JSON.stringify(results))[0];         
       console.log(json_data['is_open']) 
       if (json_data['is_open']=='1'){
-    connection.query("UPDATE user SET course_file = CONCAT(course_file ,','+'"+json_data['list_cours']+"') WHERE id='"+queryData['id']+"' ",function(error,resullts,fields){
+    connection.query("UPDATE user SET course_file = CONCAT(course_file ,'" + "," + json_data['list_cours'] + " ') WHERE id='"+queryData['id']+"' ",function(error,resullts,fields){
          console.log(resullts)                                 //شيل هي              وهدول //الكوتيشن غلط 
          console.log(error)//دقيقة لجرب
     });   
