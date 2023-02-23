@@ -19,12 +19,14 @@ router.post('/', function(req, res, next) {
      var json_data = JSON.parse(JSON.stringify(results))[0];         
       console.log(json_data['is_open']) 
       if (json_data['is_open']=='1'){
-    connection.query("INSERT INTO user (`course_file`) VALUES (CONCAT(course_file ,'"+json_data['list_cours']+"')) WHERE id='"+queryData['id']+"' ",function(error,resullts,fields){
-         console.log(resullts)                                 //شيل هي             //الكوتيشن غلط 
+    connection.query("UPDATE user SET course_file = CONCAT(course_file ,','+'"+json_data['list_cours']+"') WHERE id='"+queryData['id']+"' ",function(error,resullts,fields){
+         console.log(resullts)                                 //شيل هي              وهدول //الكوتيشن غلط 
          console.log(error)//دقيقة لجرب
     });   
-      connection.query("UPDATE copon SET `is_open`='1' , `add_by`='"+queryData['id']+"' WHERE id='"+json_data['id']+"' ",function(error,resullts,fields){          
-        res.json('تم تفعيل الكورس ');
+      connection.query("UPDATE copon SET `is_open`='0' , `add_by`='"+queryData['id']+"' WHERE id='"+json_data['id']+"' ",function(error,resullts,fields){          
+        res.json('تم تفعيل الكورس ');                    // يس هي 
+        console.log(resullts)                         //اشتغل    
+         console.log(error)
       });
      }else{
          res.json('error4');
