@@ -53,7 +53,7 @@ router.get('/part', function(req, res, next) {
       console.log(t);    
       console.log(m);
       res.json(m);
-    });            //  yes صح ؟
+    });        
 })
   });
 
