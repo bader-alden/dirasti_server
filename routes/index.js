@@ -46,12 +46,13 @@ router.get('/part', function(req, res, next) {
   //     console.log(result);
    connection.query("SELECT `course_file` FROM user WHERE id='"+queryData['id']+"'", function (error, resultt) {
       console.log(resultt);
-     var json_data = JSON.parse(JSON.stringify(resultt))
-    var t = json_data.toString().split(",")
+   //  var json_data = JSON.parse(JSON.stringify(resultt))
+     var json_data = JSON.parse(JSON.stringify(resultt))[0]['course_file']
+     var t = json_data.toString().split(",")
      var m=t[0].split("|")[0]
       console.log(t);    
       console.log(m);
-      res.json(resultt);
+      res.json(m);
     });            //  yes صح ؟
 })
   });
