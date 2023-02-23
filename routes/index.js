@@ -42,16 +42,17 @@ router.get('/course', function(req, res, next) {
 router.get('/part', function(req, res, next) {
     var queryData = url.parse(req.url, true).query
     connection.query("SELECT * FROM part WHERE subject='"+queryData['subject']+"' and grade='"+queryData['grade']+"'and teacher_name='"+queryData['teacher_name']+"' and course='"+queryData['course']+"'", function (error, result) {
-       console.log(error);
-       console.log(result);
-   connection.query("SELECT `list_cours` FROM copon WHERE id='"+queryData['id']+"'", function (error, resultt) {
+   //    console.log(error);
+  //     console.log(result);
+   connection.query("SELECT `course_file` FROM user WHERE id='"+queryData['id']+"'", function (error, resultt) {
+      console.log(resultt);
      var json_data = JSON.parse(JSON.stringify(resultt))
-    var t = json_data.split(",")
+    var t = json_data.toString().split(",")
      var m=t[0].split("|")[0]
       console.log(t);    
       console.log(m);
-       res.json(resultt);
-    });            //صح ؟
+      res.json(resultt);
+    });            //  yes صح ؟
 })
   });
 
