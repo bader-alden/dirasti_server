@@ -11,12 +11,13 @@ var connection = mysql.createConnection({
 });
 connection.connect();
 
-router.post('/update_account', function(req, res, next) {
+router.post('/', function(req, res, next) {
     var queryData=url.parse(req.url,true).query;
     connection.query("SELECT * FROM `copon` WHERE name="+queryData['name']+" ",function(error,results,fields){
         if(!error){
+          console.log(results)
           res.json(true);
-    connection.query("INSERT INTO `user`(`course_file`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]','[value-6]','[value-7]','[value-8]') ",function(error,results,fields){
+    connection.query("INSERT INTO `user`(`course_file`) VALUES ('json_data['name']') ",function(error,results,fields){
          });
     }else{
           res.json(false);
