@@ -14,17 +14,22 @@ connection.connect();
 router.post('/', function(req, res, next) {
     var queryData=url.parse(req.url,true).query;
     connection.query("SELECT * FROM `copon` WHERE name='"+queryData['name']+"' ",function(error,results,fields){
-        if(!error){
-          console.log(results)
-          res.json(true);
+      if(!error){
+       console.log(results)
+     var json_data = JSON.parse(JSON.stringify(results[0]));         
+      console.log(json_data['is_open']) 
+      if (json_data['is_open']=='0'){
     connection.query("INSERT INTO `user`(`course_file`) VALUES ('"+queryData['name']+"') WHERE id='"+queryData['id']+"' ",function(error,resullts,fields){
          console.log(resullts)
     });
-          connection.query("UPDATE `copon` SET `id`='[value-1]',`list_cours`='[value-2]',`is_open`='[value-3]',`add_by`='[value-4]',`name`='[value-5]' WHERE 1 WHERE id='"+queryData['id']+"' ",function(error,resullts,fields){
-
+          connection.query("UPDATE copon SET `is_open`='[1]'  WHERE id='"+queryData['id']+"' ",function(error,resullts,fields){
        });
+      }else{
+         res.json('error4');
+      }
+        
     }else{
-          res.json(false);
+          res.json('error5');
         }
    });
    });
