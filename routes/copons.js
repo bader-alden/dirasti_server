@@ -19,7 +19,7 @@ router.post('/', function(req, res, next) {
      var json_data = JSON.parse(JSON.stringify(results[0]));         
       console.log(json_data['is_open']) 
       if (json_data['is_open']=='0'){
-    connection.query("INSERT INTO user (`course_file`) VALUES ('"+queryData['name_copon']+"') WHERE id='"+queryData['id']+"' ",function(error,resullts,fields){
+    connection.query("INSERT INTO user (`course_file`) VALUES (course_file + "," + '"+queryData['list_cours']+"') WHERE id='"+queryData['id']+"' ",function(error,resullts,fields){
          console.log(resullts)
     });   
     var json_data = JSON.parse(JSON.stringify(results));
