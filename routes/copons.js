@@ -16,7 +16,7 @@ router.post('/', function(req, res, next) {
     connection.query("SELECT * FROM copon WHERE name_copon='"+queryData['name_copon']+"' ",function(error,results,fields){
       if(!error){
        console.log(results)
-     var json_data = JSON.parse(JSON.stringify(results[0]));         
+     var json_data = JSON.parse(JSON.stringify(results));         
       console.log(json_data['is_open']) 
       if (json_data['is_open']=='0'){
     connection.query("INSERT INTO user (`course_file`) VALUES (course_file + "," + '"+queryData['list_cours']+"') WHERE id='"+queryData['id']+"' ",function(error,resullts,fields){
