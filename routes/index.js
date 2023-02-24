@@ -48,27 +48,33 @@ router.get('/part', function(req, res, next) {
    //  var json_data = JSON.parse(JSON.stringify(resultt))
      var json_data = JSON.parse(JSON.stringify(resultt))[0]['course_file']
      var t = json_data.toString().split(",")
-     for(var i=0 ;i<t.length ; i++){
-      console.log(t);
-       var m=t[i].split("|")
+    if(check_course(t,queryData)){
+      res.send(true);
+    }else {
+      res.send(false);
+    }
+   });      
+})
+  });
+
+
+function check_course(list , queryData){
+  for(var i=0 ;i<list.length ; i++){
+      console.log(list);
+       var m=list[i].split("|")
      if(m[0]==queryData['is_course'] &&
          m[1]==queryData['grade'] && 
          m[2]==queryData['subject'] && 
          m[3]==queryData['teacher_name'] && 
          m[4]==queryData['course']
        ){
-    console.log(resultt); 
-       }else{
-         res.json('error:notfound');
+       return true;
+       // res.json(resultt);
        }
      }
-     res.json(resultt);
-   });      
-})
-  });
-
-
-
+  console.log(false)
+  return false;
+}
 
 
 
