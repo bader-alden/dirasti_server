@@ -52,9 +52,9 @@ router.get('/part', function(req, res, next) {
      for(var i=0 ;i <t.length ; i++){
       console.log(t); 
       var m=t[0].split("|")[0]
-      console.log(m);
-      res.json(m);
+      console.log(m)
      }
+      res.json(m);
     });        
 })
   });
