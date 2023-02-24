@@ -49,7 +49,7 @@ router.get('/part', function(req, res, next) {
      var json_data = JSON.parse(JSON.stringify(resultt))[0]['course_file']
      var t = json_data.toString().split(",")
     if(check_course(t,queryData)){
-      res.send(true);
+      res.send(result);
     }else {
       res.send(false);
     }
@@ -69,14 +69,12 @@ function check_course(list , queryData){
          m[4]==queryData['course']
        ){
        return true;
-       // res.json(resultt);
        }
      }
-  console.log(false)
   return false;
 }
 
 
 
-//ملك خاص ل اسراء 🧿
+//                                                                  🧿 ملك خاص ل اسراء 🧿
 module.exports = router;
