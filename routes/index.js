@@ -51,13 +51,12 @@ router.get('/part', function(req, res, next) {
      var t = json_data.toString().split(",")
      for(var i=0 ;i<t.length ; i++){
       console.log(t);
-       if(
-        var m=t[0].split("|")[0]
-        var m=t[0].split("|")[0]
-        var m=t[0].split("|")[0]
-        var m=t[0].split("|")[0]
-        var m=t[0].split("|")[0]
-       
+       var m=t[0].split("|")
+       if(m[0]==queryData['course'] &&
+         m[1]==queryData['grade'] && 
+         m[2]==queryData['subject'] && 
+         m[3]==queryData['teacher_name'] && 
+         m[4]==queryData['course']
        ){
          
          
