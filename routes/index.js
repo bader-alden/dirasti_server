@@ -59,12 +59,13 @@ router.get('/part', function(req, res, next) {
 
 
 
-function check_course(){
+function check_course(t){    fvl[m ]
 for(var t=0 ; t.length; t++){
-  
+    console.log(t);
   
   //       length
 
+}
 }
 
 
