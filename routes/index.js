@@ -57,7 +57,7 @@ router.get('/part', function(req, res, next) {
          m[3]==queryData['teacher_name'] && 
          m[4]==queryData['course']
        ){
-  console.log(resultt);
+  console.log(resultt);    //هون لازم t
    res.json(resultt);
       
        }else{
