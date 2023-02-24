@@ -60,22 +60,12 @@ router.get('/part', function(req, res, next) {
 
 
 function check_course(){
+for(var t=0 ; )
   
   
-  
-  
-  
-  
-  
+  //       length
+
 }
-
-
-//تمام ؟؟  افتحي واتس
-//
-// بس fun عادية فاضية
-
-
-
 
 
 
