@@ -60,7 +60,7 @@ router.get('/part', function(req, res, next) {
 
 
 function check_course(){
-for(var t=0 ; )
+for(var t=0 ; t.length; t++){
   
   
   //       length
