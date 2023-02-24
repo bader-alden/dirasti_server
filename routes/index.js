@@ -57,14 +57,12 @@ router.get('/part', function(req, res, next) {
          m[3]==queryData['teacher_name'] && 
          m[4]==queryData['course']
        ){
-  console.log(t[i]); 
-   res.json(t[i]);
-      
+    console.log(resultt); 
        }else{
          res.json('error:notfound');
        }
-       
      }
+     res.json(resultt);
    });      
 })
   });
