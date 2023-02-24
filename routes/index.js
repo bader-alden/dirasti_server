@@ -49,23 +49,23 @@ router.get('/part', function(req, res, next) {
    //  var json_data = JSON.parse(JSON.stringify(resultt))
      var json_data = JSON.parse(JSON.stringify(resultt))[0]['course_file']
      var t = json_data.toString().split(",")
-     var m=t[0].split("|")[0]
-      console.log(t);    
+     for(var i=0 ;i <t.length ; i++){
+      console.log(t); 
+      var m=t[0].split("|")[0]
       console.log(m);
       res.json(m);
+     }
     });        
 })
   });
-
-
-
-function check_course(t){    fvl[m ]
-for(var t=0 ; t.length; t++){
-    console.log(t);
+function check_course(t){   //برمجة واحد ما راحت 😂ع 😂الفاضي 😂
+// for(var i=0 ;i <t.length ; i++){
+//   //استخدميها فوق
+//   console.log(t);
   
   //       length
 
-}
+
 }
 
 
