@@ -50,15 +50,15 @@ router.get('/part', function(req, res, next) {
      var t = json_data.toString().split(",")
      for(var i=0 ;i<t.length ; i++){
       console.log(t);
-       var m=t[0].split("|")
-       if(m[0]==queryData['is_course'] &&
+       var m=t[i].split("|")
+     if(m[0]==queryData['is_course'] &&
          m[1]==queryData['grade'] && 
          m[2]==queryData['subject'] && 
          m[3]==queryData['teacher_name'] && 
          m[4]==queryData['course']
        ){
-  console.log(resultt);    //هون لازم t
-   res.json(resultt);
+  console.log(t[i]); 
+   res.json(t[i]);
       
        }else{
          res.json('error:notfound');
