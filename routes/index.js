@@ -60,6 +60,8 @@ router.get('/part', function(req, res, next) {
   console.log(resultt);
    res.json(resultt);
       
+       }else{
+         res.json('error:notfound');
        }
        
      }
