@@ -14,10 +14,19 @@ router.get('/', function(req, res, next) {
    var queryData=url.parse(req.url,true).query;
 connection.query("SELECT * FROM notices WHERE id='"+queryData['id']+"'",function(error,results,fields){
   console.log(error);
+   console.log(results);
   res.jeon(results);
 });
 });
 
+router.post('/', function(req, res, next) {
+   var queryData=url.parse(req.url,true).query;
+connection.query("INSERT INTO notices (`title`, `body`) VALUES ('"+queryData['title']+"','"+queryData['body']+"') WHERE id='"+queryData['id']+"'",function(error,results,fields){
+  console.log(error);
+   console.log(results);
+  res.jeon(results);
+});
+});
 
 
 module.exports = router;
