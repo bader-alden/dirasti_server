@@ -12,7 +12,7 @@ connection.connect();
 
 router.get('/', function(req, res, next) {
    var queryData=url.parse(req.url,true).query;
-connection.query("SELECT * FROM notices WHERE id='"+queryData['id']+"'",function(error,results,fields){
+connection.query("SELECT * FROM notices WHERE user_id='"+queryData['user_id']+"'",function(error,results,fields){
   console.log(error);
    console.log(results);
   res.jeon(results);
@@ -21,7 +21,7 @@ connection.query("SELECT * FROM notices WHERE id='"+queryData['id']+"'",function
 
 router.post('/', function(req, res, next) {
    var queryData=url.parse(req.url,true).query;
-connection.query("INSERT INTO notices (`title`, `body`) VALUES ('"+queryData['title']+"','"+queryData['body']+"')" ,function(error,results,fields){
+connection.query("INSERT INTO notices (`title`, `body`,`user_id`) VALUES ('"+queryData['title']+"','"+queryData['body']+"','"+queryData['user_id']+"')" ,function(error,results,fields){
   console.log(error);
    console.log(results);
   res.jeon(results);

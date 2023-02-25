@@ -23,7 +23,7 @@ router.post('/', function(req, res, next) {
          console.log(resullts)                                 //شيل هي              وهدول //الكوتيشن غلط 
          console.log(error)//دقيقة لجرب
     });   
-      connection.query("UPDATE copon SET `is_open`='0' , `add_by`='"+queryData['id']+"' WHERE id='"+json_data['id']+"' ",function(error,resullts,fields){          
+      connection.query("UPDATE copon SET `is_open`='0' , `add_by`='"+queryData['user_id']+"' WHERE id='"+json_data['id']+"' ",function(error,resullts,fields){          
         res.json('تم تفعيل الكورس ');                    // يس هي 
         console.log(resullts)                         //اشتغل    
          console.log(error)
