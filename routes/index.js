@@ -75,9 +75,9 @@ function check_course(list , queryData){
 }
 router.get('/my_course', function(req, res, next) {
     var queryData = url.parse(req.url, true).query
-if(){
+
   
-}
-    });
+
+    }); 
   //                                                               🧿 ملك خاص ل اسراء 🧿
 module.exports = router;
