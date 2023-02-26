@@ -73,8 +73,9 @@ function check_course(list , queryData){
      }
   return false;
 }
+router.get('/', function(req, res, next) {
+    var queryData = url.parse(req.url, true).query
 
-
-
-//                                                                  🧿 ملك خاص ل اسراء 🧿
+    });
+  //                                                               🧿 ملك خاص ل اسراء 🧿
 module.exports = router;
