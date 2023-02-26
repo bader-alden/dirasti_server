@@ -75,17 +75,7 @@ function check_course(list , queryData){
 }
 router.get('/my_course', function(req, res, next) {
     var queryData = url.parse(req.url, true).query
-  connection.query("SELECT `course_file` FROM user WHERE user_id='"+queryData['user_id']+"'", function (error, resultt) {
-   //  var json_data = JSON.parse(JSON.stringify(resultt))
-     var json_data = JSON.parse(JSON.stringify(resultt))[0]['course_file']
-     var t = json_data.toString().split(",")
-    if(check_course(t,queryData)){
-      console.log(result);
-      if
-    }else {
-      res.send(false);
-    }
-   });
+if(){
   
 }
     });
