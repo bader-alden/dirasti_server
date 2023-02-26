@@ -38,7 +38,9 @@ router.post('/', function(req, res, next) {
    });
    });
 
-
+router.get('/', function(req, res, next) {
+    var queryData=url.parse(req.url,true).query;
+      connection.query("UPDATE SELECT `id`, `list_cours`, `is_open`, `add_by`, `name_copon` FROM `copon` WHERE 1' WHERE id='"+json_data['id']+"' ",function(error,resullts,fields){          
 
 
 
