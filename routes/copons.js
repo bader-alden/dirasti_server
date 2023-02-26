@@ -40,13 +40,21 @@ router.post('/', function(req, res, next) {
 
 router.get('/', function(req, res, next) {
     var queryData=url.parse(req.url,true).query;
-      connection.query("UPDATE SELECT `id`, `list_cours`, `is_open`, `add_by`, `name_copon` FROM `copon` WHERE 1' WHERE id='"+json_data['id']+"' ",function(error,resullts,fields){          
+ connection.query("SELECT  `list_cours`, `is_open`, `name_copon` FROM copon  WHERE add_by='"+queryData['user_id']+"' ",function(error,resullt,fields){          
+ console.log(resullt)
+    
+    });
 
+   });
 
+router.get('/', function(req, res, next) {
+    var queryData=url.parse(req.url,true).query;
+ connection.query("SELECT `id`, `list_cours`, `is_open`, `name_copon` FROM copon  WHERE add_by='"+queryData['user_id']+"' ",function(error,resullt,fields){          
+ console.log(resullt)
+    
+    });
 
-
-
-
+   });
 
 
 
