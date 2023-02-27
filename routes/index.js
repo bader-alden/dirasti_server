@@ -77,10 +77,12 @@ function check_course(list , queryData){
 
 router.get('/my_course', function(req, res, next) {
     var queryData = url.parse(req.url, true).query
- connection.query("SELECT `course_file` FROM user WHERE user_id='"+queryData['user_id']+"'", function (error, resulte) {
+ connection.query('SELECT `course_file` FROM user WHERE user_id="'+queryData['user_id']+'"', function (error, resulte) {
+   console.log(error)
+   console.log(resulte)
     var json_data = JSON.parse(JSON.stringify(resulte))[0]['course_file']
     var my = json_data.toString().split(",")
-    var all = []
+    var all = []    //شبها 
     var num_of_course = 0
     var num_of_file = 0
       for(var i=0 ;i<my.length ; i++){
