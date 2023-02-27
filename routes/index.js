@@ -73,22 +73,29 @@ function check_course(list , queryData){
      }
   return false;
 }
+
+
 router.get('/my_course', function(req, res, next) {
     var queryData = url.parse(req.url, true).query
  connection.query("SELECT `course_file` FROM user WHERE user_id='"+queryData['user_id']+"'", function (error, resulte) {
     var json_data = JSON.parse(JSON.stringify(resulte))[0]['course_file']
     var my = json_data.toString().split(",")
+    var all = []
     var num_of_course = 0
     var num_of_file = 0
-    if(){
-      
-    }
       for(var i=0 ;i<my.length ; i++){
       console.log(my);
-   var m=my[i].split("|")
-     var type = m[0]
-     var num = m[4]  //هي سميتا id
-      if(queryData['is_course']==1 && m[0]==1){
+    var m=my[i].split("|")
+    var type = m[0]
+    var num = m[4] 
+      if (m[0]==1){
+       num_of_course++
+       all+1
+      }else{
+       num_of_file++
+       all+1
+     }
+    if(queryData['is_course']==1 && m[0]==1){
        connection.query('SELECT `teacher_name`, `subject`, `price`, `photo`, `grade`, `part`, `number_hours` FROM course WHERE is_course="'+queryData['is_course']+'" and id="'+num+'"', function (error, resulte) {
          console.log(error);
          console.log("resulte");
@@ -99,7 +106,7 @@ router.get('/my_course', function(req, res, next) {
         console.log("results");
       
       });
-    }else{
+     }else{
         console.log("notfound10");
         res.send("notfound10");
       }
