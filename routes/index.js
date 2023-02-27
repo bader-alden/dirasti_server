@@ -75,17 +75,20 @@ function check_course(list , queryData){
 }
 router.get('/my_course', function(req, res, next) {
     var queryData = url.parse(req.url, true).query
- connection.query(" SELECT `course_file` FROM user WHERE user_id='"+queryData['user_id']+"' ", function (error, resulte) {
-     var json_data = JSON.parse(JSON.stringify(resulte))[0]['course_file']
+ connection.query("SELECT `course_file` FROM user WHERE user_id='"+queryData['user_id']+"' ", function (error, resulte) {
+   var json_data = JSON.parse(JSON.stringify(resulte))[0]['course_file']
      var my = json_data.toString().split(",")
     if(mycourse_myfile(my,queryData)){
+   var json_data = JSON.parse(JSON.stringify(resulte))['course']  
       if(queryData['is_course']==1){
-       connection.query("SELECT `id`, `teacher_name`, `subject`, `price`, `photo`, `grade`, `part`, `number_hours`, `is_course` FROM course WHERE 1", function (error, resulte) {
+       connection.query('SELECT  `teacher_name`, `subject`, `price`, `photo`, `grade`, `part`, `number_hours` FROM course WHERE "'+json_data['is_course']+'"', function (error, resulte) {
      });
       }else{
-  connection.query("SELECT `id`, `teacher_name`, `subject`, `price`, `photo`, `grade`, `part`, `number_hours`, `is_course` FROM course WHERE is_course=+"'json_data['is_course']'"+", function (error, resulte) {
+  connection.query('SELECT `teacher_name`, `subject`, `price`, `photo`, `grade` FROM course WHERE is_course="'+json_data['is_course']+'"', function (error, resulte) {
+     res.send(resulte);
+  });
       }
-      res.send(resulte);
+      //res.send(resulte);
     }else {
       res.send(false);
     }
