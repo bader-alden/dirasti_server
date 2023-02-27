@@ -75,9 +75,35 @@ function check_course(list , queryData){
 }
 router.get('/my_course', function(req, res, next) {
     var queryData = url.parse(req.url, true).query
-
-  
+ connection.query(" SELECT `course_file` FROM user WHERE user_id='"+queryData['user_id']+"' ", function (error, resulte) {
+     var json_data = JSON.parse(JSON.stringify(resulte))[0]['course_file']
+     var my = json_data.toString().split(",")
+    if(check_course(my,queryData)){
+      res.send(resulte);
+    }else {
+      res.send(false);
+    }
+   
+   
+   
+    }); 
 
     }); 
+
+function my_course_file(list , queryData){
+  for(var i=0 ;i<list.length ; i++){
+      console.log(list);
+       var m=list[i].split("|")
+     if(m[0]==queryData['is_course'] &&
+         m[1]==queryData['grade'] && 
+         m[2]==queryData['subject'] && 
+         m[3]==queryData['teacher_name'] && 
+         m[4]==queryData['course']
+       ){
+       return true;
+       }
+     }
+  return false;
+}
   //                                                               🧿 ملك خاص ل اسراء 🧿
 module.exports = router;
