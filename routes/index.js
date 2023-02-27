@@ -77,7 +77,7 @@ function check_course(list , queryData){
 
 router.get('/my_course', function(req, res, next) {
     var queryData = url.parse(req.url, true).query
- connection.query('SELECT `course_file` FROM user WHERE user_id="'+queryData['user_id']+'"', function (error, resulte) {
+ connection.query('SELECT course_file FROM user WHERE user_id="'+queryData['user_id']+'"', function (error, resulte) {
    console.log(error)
    console.log(resulte)
     var json_data = JSON.parse(JSON.stringify(resulte))[0]['course_file']
@@ -96,25 +96,26 @@ router.get('/my_course', function(req, res, next) {
        num_of_file++
      }
     if(queryData['is_course']==1 && m[0]==1){
-    connection.query('SELECT `teacher_name`, `subject`, `price`, `photo`, `grade`, `part`, `number_hours` FROM course WHERE is_course="'+queryData['is_course']+'" and id="'+num+'"', function (error, resulte) {
+    connection.query('SELECT `teacher_name`, `subject`, `price`, `photo`, `grade`, `part`, `number_hours` FROM course WHERE  id="'+num+'"', function (error, resulte) {
          console.log(error);
-       all.add(resulte);
-      if(i == my.length -1  && num_of_course == all.length ){
+         console.log(resulte);
+       all.push(resulte);
+      if( num_of_course == all.length ){
          console.log(all);
          res.send(all)
       }
     });
     }else if(queryData['is_course']==0 && m[0]==0){
-     connection.query('SELECT `teacher_name`, `subject`, `price`, `photo`, `grade`, `number_of_pages`, `is_course` FROM file WHERE is_course="'+queryData['is_course']+'" and  id="'+num+'"', function (error, results) {
-       all.add(results);
-       if(i==my.length -1  && num_of_file == all.length ){
+     connection.query('SELECT `teacher_name`, `subject`, `price`, `photo`, `grade`, `number_of_pages`, `is_course` FROM file WHERE    id="'+num+'"', function (error, results) {
+       all.push(results);
+       if( num_of_file == all.length ){
          console.log(all);
          res.send(all)
       }
       });
     }else{
         console.log("notfound10");
-        res.send("notfound10");
+        //res.send("notfound10");
       }
         
         
