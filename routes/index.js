@@ -81,15 +81,16 @@ router.get('/my_course', function(req, res, next) {
       for(var i=0 ;i<my.length ; i++){
       console.log(my);
    var m=my[i].split("|")
-     var id = resulte['course']  //هي سميتا id
-      if(queryData['is_course']==1){
-       connection.query('SELECT `teacher_name`, `subject`, `price`, `photo`, `grade`, `part`, `number_hours` FROM course WHERE is_course="'+queryData['is_course']+'" and id="'+id['course']+'"', function (error, resulte) {
+     var type = m[0]
+     var num = m[4]  //هي سميتا id
+      if(m[0]==1){
+       connection.query('SELECT `teacher_name`, `subject`, `price`, `photo`, `grade`, `part`, `number_hours` FROM course WHERE is_course="'+queryData['is_course']+'" and id="'+num+'"', function (error, resulte) {
          console.log(error);
          console.log("resulte");
          res.send(resulte);
        });
-     }else if(queryData['is_course']==0){
-     connection.query('SELECT `teacher_name`, `subject`, `price`, `photo`, `grade`, `number_of_pages`, `is_course` FROM file WHERE is_course="'+queryData['is_course']+'" and  id="'+id['course']+'"', function (error, results) {
+     }else if(m[0]==1){
+     connection.query('SELECT `teacher_name`, `subject`, `price`, `photo`, `grade`, `number_of_pages`, `is_course` FROM file WHERE is_course="'+queryData['is_course']+'" and  id="'+num+'"', function (error, results) {
         console.log("results");
         res.send(results);
       });
