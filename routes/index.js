@@ -79,12 +79,12 @@ router.get('/my_course', function(req, res, next) {
    var json_data = JSON.parse(JSON.stringify(resulte))[0]['course_file']
      var my = json_data.toString().split(",")
     if(mycourse_myfile(my,queryData)){
-   var json_data = JSON.parse(JSON.stringify(resulte))['course']  
+   var ll = (resulte)['course']  
       if(queryData['is_course']==1){
-       connection.query('SELECT  `teacher_name`, `subject`, `price`, `photo`, `grade`, `part`, `number_hours` FROM course WHERE "'+json_data['is_course']+'"', function (error, resulte) {
+       connection.query('SELECT  `teacher_name`, `subject`, `price`, `photo`, `grade`, `part`, `number_hours` FROM course WHERE "'+queryData['is_course']+'"', function (error, resulte) {
      });
       }else{
-  connection.query('SELECT `teacher_name`, `subject`, `price`, `photo`, `grade` FROM course WHERE is_course="'+json_data['is_course']+'"', function (error, resulte) {
+  connection.query('SELECT `teacher_name`, `subject`, `price`, `photo`, `grade` FROM course WHERE is_course="'+queryData['is_course']+'"', function (error, resulte) {
      res.send(resulte);
   });
       }
