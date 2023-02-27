@@ -78,10 +78,12 @@ router.get('/my_course', function(req, res, next) {
  connection.query("SELECT `course_file` FROM user WHERE user_id='"+queryData['user_id']+"' ", function (error, resulte) {
    var json_data = JSON.parse(JSON.stringify(resulte))[0]['course_file']
      var my = json_data.toString().split(",")
-    if(mycourse_myfile(my,queryData)){
-   var ll = (resulte)['course']  
+      for(var i=0 ;i<list.length ; i++){
+      console.log(list);
+     var m=list[i].split("|")
+   var ll = resulte['course']  
       if(queryData['is_course']==1){
-       connection.query('SELECT  `teacher_name`, `subject`, `price`, `photo`, `grade`, `part`, `number_hours` FROM course WHERE "'+queryData['is_course']+'"', function (error, resulte) {
+       connection.query('SELECT  `teacher_name`, `subject`, `price`, `photo`, `grade`, `part`, `number_hours` FROM course WHERE is_course="'+queryData['is_course']+'" id="'+json_data['is_course']+'"', function (error, resulte) {
      });
       }else{
   connection.query('SELECT `teacher_name`, `subject`, `price`, `photo`, `grade` FROM course WHERE is_course="'+queryData['is_course']+'"', function (error, resulte) {
@@ -89,7 +91,7 @@ router.get('/my_course', function(req, res, next) {
   });
       }
       //res.send(resulte);
-    }else {
+    }else
       res.send(false);
     }
    
@@ -103,16 +105,15 @@ function mycourse_myfile(list , queryData){
   for(var i=0 ;i<list.length ; i++){
       console.log(list);
        var m=list[i].split("|")
-     if(m[0]==queryData['is_course'] &&
+     m[0]==queryData['is_course'] &&
          m[1]==queryData['grade'] && 
          m[2]==queryData['subject'] && 
          m[3]==queryData['teacher_name'] && 
          m[4]==queryData['course']
-       ){
+       
        return true;
        }
-     }
-  return false;
+     
 }
   //                                                               🧿 ملك خاص ل اسراء 🧿
 module.exports = router;
