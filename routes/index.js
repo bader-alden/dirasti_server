@@ -76,32 +76,28 @@ function check_course(list , queryData){
 router.get('/my_course', function(req, res, next) {
     var queryData = url.parse(req.url, true).query
  connection.query("SELECT `course_file` FROM user WHERE user_id='"+queryData['user_id']+"'", function (error, resulte) {
-   var json_data = JSON.parse(JSON.stringify(resulte))[0]['course_file']
-     var my = json_data.toString().split(",")
+    var json_data = JSON.parse(JSON.stringify(resulte))[0]['course_file']
+    var my = json_data.toString().split(",")
       for(var i=0 ;i<my.length ; i++){
       console.log(my);
-     var m=my[i].split("|")
-         m[0]==['is_course'] &&      //هدول بشو بدنا نحطن 
-         m[1]==['grade'] && 
-         m[2]==['subject'] && 
-         m[3]==['teacher_name'] && 
-         m[4]==['course']
-     var ll = resulte['course']  
+   var m=my[i].split("|")
+     var id = resulte['course']  //هي سميتا id
       if(queryData['is_course']==1){
-       connection.query('SELECT `teacher_name`, `subject`, `price`, `photo`, `grade`, `part`, `number_hours` FROM course WHERE is_course="'+queryData['is_course']+'" and id="'+json_data['course']+'"', function (error, resulte) {
-       console.log("resulte")
-       res.send(resulte);
+       connection.query('SELECT `teacher_name`, `subject`, `price`, `photo`, `grade`, `part`, `number_hours` FROM course WHERE is_course="'+queryData['is_course']+'" and id="'+id['course']+'"', function (error, resulte) {
+         console.log(error);
+         console.log("resulte");
+         res.send(resulte);
        });
-      }else if(queryData['is_course']==0){
-   connection.query('SELECT `teacher_name`, `subject`, `price`, `photo`, `grade`, `number_of_pages`, `is_course` FROM file WHERE is_course="'+queryData['is_course']+'" and  id="'+json_data['course']+'"', function (error, results) {
-     console.log("results")
-     res.send(results);
-  });
-      }else{
-        console.log("notfound10")
+     }else if(queryData['is_course']==0){
+     connection.query('SELECT `teacher_name`, `subject`, `price`, `photo`, `grade`, `number_of_pages`, `is_course` FROM file WHERE is_course="'+queryData['is_course']+'" and  id="'+id['course']+'"', function (error, results) {
+        console.log("results");
+        res.send(results);
+      });
+    }else{
+        console.log("notfound10");
+        res.send("notfound10");
       }
-      //res.send(resulte);
-    }
+      }
    
    
    
