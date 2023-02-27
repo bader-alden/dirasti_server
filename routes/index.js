@@ -97,16 +97,17 @@ router.get('/my_course', function(req, res, next) {
     connection.query('SELECT `teacher_name`, `subject`, `price`, `photo`, `grade`, `part`, `number_hours` FROM course WHERE is_course="'+queryData['is_course']+'" and id="'+num+'"', function (error, resulte) {
          console.log(error);
        all.add(resulte);
+        //i dont understand
+      if(i == my.length -1  && num_of_course == all.length ){
          console.log(all);
-      if(i==(my.length -1)  && num_of_course=all ){
-        
       }
-    });
+    });// all   يلا رجعي ال
     }else if(queryData['is_course']==0 && m[0]==0){
      connection.query('SELECT `teacher_name`, `subject`, `price`, `photo`, `grade`, `number_of_pages`, `is_course` FROM file WHERE is_course="'+queryData['is_course']+'" and  id="'+num+'"', function (error, results) {
        all.add(results);
-       console.log(all);
-      
+       if(i==my.length -1  && num_of_course == all.length ){
+         console.log(all);
+      }
       });
     }else{
         console.log("notfound10");
