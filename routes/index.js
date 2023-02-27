@@ -98,7 +98,7 @@ router.get('/my_course', function(req, res, next) {
          console.log(error);
        all.add(resulte);
          console.log(all);
-      if(my-1  && num_of_file+num_of_course=all ){
+      if(i==(my.length -1)  && num_of_course=all ){
         
       }
     });
