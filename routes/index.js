@@ -96,10 +96,12 @@ router.get('/my_course', function(req, res, next) {
     if(queryData['is_course']==1 && m[0]==1){
     connection.query('SELECT `teacher_name`, `subject`, `price`, `photo`, `grade`, `part`, `number_hours` FROM course WHERE is_course="'+queryData['is_course']+'" and id="'+num+'"', function (error, resulte) {
          console.log(error);
-         all.add(resulte);
+       all.add(resulte);
          console.log(all);
+      if(my-1  && num_of_file+num_of_course=all ){
         
-         });
+      }
+    });
     }else if(queryData['is_course']==0 && m[0]==0){
      connection.query('SELECT `teacher_name`, `subject`, `price`, `photo`, `grade`, `number_of_pages`, `is_course` FROM file WHERE is_course="'+queryData['is_course']+'" and  id="'+num+'"', function (error, results) {
        all.add(results);
