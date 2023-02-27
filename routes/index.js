@@ -1,4 +1,4 @@
-const express = require('express');
+ const express = require('express');
 const router = express.Router();
 const url = require('url');
 
@@ -90,17 +90,15 @@ router.get('/my_course', function(req, res, next) {
     var num = m[4] 
       if (m[0]==1){
        num_of_course++
-       all+1
       }else{
        num_of_file++
-       all+1
      }
     if(queryData['is_course']==1 && m[0]==1){
        connection.query('SELECT `teacher_name`, `subject`, `price`, `photo`, `grade`, `part`, `number_hours` FROM course WHERE is_course="'+queryData['is_course']+'" and id="'+num+'"', function (error, resulte) {
          console.log(error);
          console.log("resulte");
-        
-       });
+       // لا  خطك احلى
+         });
      }else if(queryData['is_course']==0 && m[0]==0){
      connection.query('SELECT `teacher_name`, `subject`, `price`, `photo`, `grade`, `number_of_pages`, `is_course` FROM file WHERE is_course="'+queryData['is_course']+'" and  id="'+num+'"', function (error, results) {
         console.log("results");
@@ -110,10 +108,7 @@ router.get('/my_course', function(req, res, next) {
         console.log("notfound10");
         res.send("notfound10");
       }
-      }
-   
-   
-   
+      }   
     }); 
 
     }); 
