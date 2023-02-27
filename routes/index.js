@@ -94,7 +94,7 @@ router.get('/my_course', function(req, res, next) {
         console.log("results");
         res.send(results);
       });
-    }else{
+     }else{
         console.log("notfound10");
         res.send("notfound10");
       }
