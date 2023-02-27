@@ -78,7 +78,13 @@ router.get('/my_course', function(req, res, next) {
  connection.query(" SELECT `course_file` FROM user WHERE user_id='"+queryData['user_id']+"' ", function (error, resulte) {
      var json_data = JSON.parse(JSON.stringify(resulte))[0]['course_file']
      var my = json_data.toString().split(",")
-    if(check_course(my,queryData)){
+    if(mycourse_myfile(my,queryData)){
+      if(queryData['is_course']==1){
+       connection.query("SELECT `id`, `teacher_name`, `subject`, `price`, `photo`, `grade`, `part`, `number_hours`, `is_course` FROM course WHERE 1", function (error, resulte) {
+     });
+      }else{
+  connection.query("SELECT `id`, `teacher_name`, `subject`, `price`, `photo`, `grade`, `part`, `number_hours`, `is_course` FROM course WHERE is_course=+"'json_data['is_course']'"+", function (error, resulte) {
+      }
       res.send(resulte);
     }else {
       res.send(false);
@@ -90,7 +96,7 @@ router.get('/my_course', function(req, res, next) {
 
     }); 
 
-function my_course_file(list , queryData){
+function mycourse_myfile(list , queryData){
   for(var i=0 ;i<list.length ; i++){
       console.log(list);
        var m=list[i].split("|")
