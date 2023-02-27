@@ -83,18 +83,18 @@ router.get('/my_course', function(req, res, next) {
    var m=my[i].split("|")
      var type = m[0]
      var num = m[4]  //هي سميتا id
-      if(m[0]==1){
+      if(queryData['is_course']==1 && m[0]==1){
        connection.query('SELECT `teacher_name`, `subject`, `price`, `photo`, `grade`, `part`, `number_hours` FROM course WHERE is_course="'+queryData['is_course']+'" and id="'+num+'"', function (error, resulte) {
          console.log(error);
          console.log("resulte");
-         res.send(resulte);
+        
        });
-     }else if(m[0]==1){
+     }else if(queryData['is_course']==0 && m[0]==0){
      connection.query('SELECT `teacher_name`, `subject`, `price`, `photo`, `grade`, `number_of_pages`, `is_course` FROM file WHERE is_course="'+queryData['is_course']+'" and  id="'+num+'"', function (error, results) {
         console.log("results");
-        res.send(results);
+      
       });
-     }else{
+    }else{
         console.log("notfound10");
         res.send("notfound10");
       }
