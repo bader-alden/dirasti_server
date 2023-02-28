@@ -72,7 +72,7 @@ router.post('/signin', function(req, res, next) {
          console.log(results) 
     connection.query("SELECT `user_id` FROM user WHERE mobile_id='"+queryData['mobile_id']+"'",function(error,result,fields){
         var json_data = JSON.parse(JSON.stringify(result))[0]['user_id'];             
-         res.json(result)
+         res.json(json_data)
          res.json('welcome in dirasty app');
     });
        });
