@@ -65,8 +65,9 @@ router.post('/delete_account', function(req, res, next) {
 router.post('/signin', function(req, res, next) {
     var queryData=url.parse(req.url,true).query;  
     connection.query("SELECT mobile_id FROM user WHERE mobile_id='"+queryData['mobile_id']+"' ",function(error,results,fields){
+        console.log(results.length==0);                                       
         console.log(results);                                       
-  if(results=null){ 
+  if(results.length==0){ 
     connection.query("INSERT INTO user (`name`, `email`, `is_male`, `course_file`,`grade`,`mobile_id`,`secret_code`) VALUES ('"+queryData['name']+"','"+queryData['email']+"','"+queryData['is_male']+"',' ','"+queryData['grade']+"', '"+queryData['mobile_id']+"', '"+queryData['secret_code']+"')",function(error,results,fields){
          console.log(error)
          console.log(results)
