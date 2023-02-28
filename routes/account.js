@@ -33,8 +33,7 @@ router.post('/login', function(req, res, next) {
         console.log(404);
         res.json('error1');
       }
- }else{  
-        
+ }else{   
          res.json('error2');
  }
     
