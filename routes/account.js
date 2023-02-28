@@ -67,13 +67,15 @@ router.post('/signin', function(req, res, next) {
         console.log(results.length==0);                                       
         console.log(results);                                       
   if(results.length==0){ 
-    connection.query("INSERT INTO user (`name`, `email`, `is_male`, `course_file`,`grade`,`mobile_id`,`secret_code`) VALUES ('"+queryData['name']+"','"+queryData['email']+"','"+queryData['is_male']+"',' ','"+queryData['grade']+"', '"+queryData['mobile_id']+"', '"+queryData['secret_code']+"')",function(error,results,fields){
+    connection.query("INSERT INTO user (`name`, `email`, `is_male`, `course_file`,`grade`,`mobile_id`,`secret_code`) VALUES ('"+queryData['name']+"','"+queryData['email']+"','"+queryData['is_male']+"',' ','"+queryData['grade']+"', '"+queryData['mobile_id']+"', '"+queryData['secret_code']+"')",function(error,resullts,fields){
          console.log(error)
-         console.log(results)    
-        var json_data = JSON.parse(JSON.stringify(results))[0]['user_id'];             
-         res.json(results)
+         console.log(results) 
+    connection.query("SELECT `user_id` FROM user WHERE mobile_id='"+queryData['mobile_id']+"'",function(error,result,fields){
+        var json_data = JSON.parse(JSON.stringify(result))[0]['user_id'];             
+         res.json(result)
          res.json('welcome in dirasty app');
     });
+       });
   }else {
     res.json('error3');
   }
