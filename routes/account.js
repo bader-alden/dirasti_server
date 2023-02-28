@@ -71,7 +71,7 @@ router.post('/signin', function(req, res, next) {
          console.log(error)
          console.log(results)    
         var json_data = JSON.parse(JSON.stringify(results))[0]['user_id'];             
-         res.json(json_data)
+         res.json(results)
          res.json('welcome in dirasty app');
     });
   }else {
