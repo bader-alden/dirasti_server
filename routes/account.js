@@ -61,16 +61,18 @@ router.post('/delete_account', function(req, res, next) {
    });
    });
 //انشاء حساب 
-router.post('/signin', function(req, res, next) {
+router.post('/signin',async function(req, res, next) {
     var queryData=url.parse(req.url,true).query;  
-    connection.query("SELECT mobile_id FROM user WHERE mobile_id='"+queryData['mobile_id']+"' ",function(error,results,fields){
+  await  connection.query("SELECT mobile_id FROM user WHERE mobile_id='"+queryData['mobile_id']+"' ",async function(error,results,fields){
         console.log(results.length==0);                                       
         console.log(results);                                       
   if(results.length==0){ 
-    connection.query("INSERT INTO user (`name`, `email`, `is_male`, `course_file`,`grade`,`mobile_id`,`secret_code`) VALUES ('"+queryData['name']+"','"+queryData['email']+"','"+queryData['is_male']+"',' ','"+queryData['grade']+"', '"+queryData['mobile_id']+"', '"+queryData['secret_code']+"')",function(error,resullts,fields){
+  await  connection.query("INSERT INTO user (`name`, `email`, `is_male`, `course_file`,`grade`,`mobile_id`,`secret_code`) VALUES ('"+queryData['name']+"','"+queryData['email']+"','"+queryData['is_male']+"',' ','"+queryData['grade']+"', '"+queryData['mobile_id']+"', '"+queryData['secret_code']+"')",async function(error,resullts,fields){
          console.log(error)
          console.log(results) 
-    connection.query("SELECT `user_id` FROM user WHERE mobile_id='"+queryData['mobile_id']+"'",function(error,result,fields){
+   await connection.query("SELECT `user_id` FROM user WHERE mobile_id='"+queryData['mobile_id']+"'",function(error,result,fields){
+     console.log(error)
+     console.log(result)
         var json_data = JSON.parse(JSON.stringify(result))[0]['user_id'];             
          res.json(json_data)
          //res.json('welcome in dirasty app');
