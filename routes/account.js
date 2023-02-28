@@ -14,7 +14,7 @@ router.post('/login', function(req, res, next) {
   var queryData=url.parse(req.url,true).query;
       connection.query("SELECT * FROM user WHERE user_id='"+queryData['user_id']+"' ",function(error,resultts,fields){
         console.log(resultts);                                       
-  if(resultts!=null){                                              
+  if(resultts.length!=0){                                              
    var json_data = JSON.parse(JSON.stringify(resultts[0])); //ليش ما حطيت ال0 هون            
       console.log(json_data['secret_code'])   
       if (json_data['secret_code']=='restart'){  
