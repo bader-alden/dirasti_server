@@ -23,6 +23,14 @@ router.get('/', function(req, res, next) {
       });
   })
   });
+router.get('/all_grade', function(req, res, next) {
+  const queryData = url.parse(req.url, true).query;
+  connection.query("SELECT * FROM grade" ,function(error,results) {
+      console.log(results);
+       res.send(results);
+      });
+  })
+
 
 router.get('/teatcher', function(req, res, next) {
     var queryData = url.parse(req.url, true).query;
