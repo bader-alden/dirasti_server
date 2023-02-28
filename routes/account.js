@@ -23,7 +23,7 @@ router.post('/login', function(req, res, next) {
         console.log(results);
         console.log(200);
         // res.json("bravvvvvo best🔥🔥🔥")
-         console.log(json_data['user_id']);
+         res.json(resultts);
             });
       }
       if (queryData['secret_code']==json_data['secret_code']){
