@@ -12,14 +12,13 @@ connection.connect();
 //تسجيل دخول 
 router.post('/login', function(req, res, next) {
   var queryData=url.parse(req.url,true).query;
-      connection.query("SELECT * FROM user WHERE mobile_id='"+queryData['mobile_id']+"' ",function(error,resultts,fields){
+      connection.query("SELECT * FROM user WHERE user_id='"+queryData['user_id']+"' ",function(error,resultts,fields){
         console.log(resultts);                                       
   if(resultts!=null){                                              
    var json_data = JSON.parse(JSON.stringify(resultts[0])); //ليش ما حطيت ال0 هون            
       console.log(json_data['secret_code'])   
-       console.log(json_data['user_id']);
       if (json_data['secret_code']=='restart'){  
-       connection.query("UPDATE user SET secret_code='"+queryData['secret_code']+"' WHERE mobile_id='"+queryData['mobile_id']+"' ",function(error,results,fields){
+       connection.query("UPDATE user SET secret_code='"+queryData['secret_code']+"' WHERE user_id='"+queryData['user_id']+"' ",function(error,results,fields){
         console.log(results);
         console.log(200);
         // res.json("bravvvvvo best🔥🔥🔥")
@@ -30,7 +29,6 @@ router.post('/login', function(req, res, next) {
         console.log(200);
          res.json(resultts);
        console.log(json_data[0]['secret_code']) 
-        console.log(json_data['user_id']);
      }if  (queryData['secret_code']!=json_data['secret_code']&&json_data['secret_code']!='restart'){
         console.log(404);
         res.json('error1');
@@ -71,9 +69,8 @@ router.post('/signin', function(req, res, next) {
   if(results.length==0){ 
     connection.query("INSERT INTO user (`name`, `email`, `is_male`, `course_file`,`grade`,`mobile_id`,`secret_code`) VALUES ('"+queryData['name']+"','"+queryData['email']+"','"+queryData['is_male']+"',' ','"+queryData['grade']+"', '"+queryData['mobile_id']+"', '"+queryData['secret_code']+"')",function(error,results,fields){
          console.log(error)
-         console.log(results)
-    var json_data = JSON.parse(JSON.stringify(results[0]));          
-       console.log(json_data['user_id']);
+         console.log(results)          
+       console.log(results['user_id']);
          res.json('welcome in dirasty app');
     });
   }else {
