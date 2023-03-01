@@ -8,6 +8,7 @@ var indexRouter = require('./routes/index');
 var accountRouter = require('./routes/account');
 var noticesRouter = require('./routes/notices');
 var coponsRouter = require('./routes/copons');
+var dataRouter = require('./routes/data');
 var app = express();
 const mysql = require('mysql');
 var server = app.listen((3000),()=>{
@@ -34,6 +35,7 @@ app.use('/index', indexRouter);
 app.use('/notices', noticesRouter);
 app.use('/account', accountRouter);
 app.use('/copons', coponsRouter);
+app.use('/data', dataRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
