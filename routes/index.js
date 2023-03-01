@@ -54,9 +54,9 @@ router.get('/part', function(req, res, next) {
   //     console.log(result);
       connection.query("SELECT `course_file` FROM user WHERE user_id='"+queryData['user_id']+"'", function (error, resultt) {
    //  var json_data = JSON.parse(JSON.stringify(resultt))
-        console.log(json_data)
+        
      var json_data = JSON.parse(JSON.stringify(resultt))[0]['course_file']
-      
+      console.log(json_data)
      var t = json_data.toString().split(",")
     if(check_course(t,queryData)){
       res.send(result);
