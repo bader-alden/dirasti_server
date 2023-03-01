@@ -41,6 +41,13 @@ router.get('/Social Media', function(req, res, next) {
       });
   })
 
+router.get('/the_support', function(req, res, next) {
+  const queryData = url.parse(req.url, true).query;
+  connection.query("SELECT * FROM `the_support`" ,function(error,results) {
+      console.log(results);
+       res.send(results);
+      });
+  })
 
 
 
