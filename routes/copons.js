@@ -12,7 +12,7 @@ connection.connect();
 
 router.post('/', function(req, res, next) {
     var queryData=url.parse(req.url,true).query;
-    connection.query("SELECT * FROM copon WHERE name_copon='"+queryData['name_copon']+"' ",function(error,results,fields){
+    connection.query("SELECT * FROM copon WHERE uid_copon='"+queryData['uid_copon']+"' ",function(error,results,fields){
       if(!error){
        console.log(results)
      var json_data = JSON.parse(JSON.stringify(results))[0];         
@@ -39,7 +39,7 @@ router.post('/', function(req, res, next) {
 
 router.get('/', function(req, res, next) {
     var queryData=url.parse(req.url,true).query;
- connection.query("SELECT  `list_cours`, `is_open`, `name_copon` FROM copon  WHERE name_copon='"+queryData['name_copon']+"' ",function(error,resullt,fields){          
+ connection.query("SELECT  `name_copon`, `is_open`, `uid_copon`, `uid_copon` FROM copon  WHERE uid_copon='"+queryData['uid_copon']+"' ",function(error,resullt,fields){          
  console.log(resullt)
 if(resullt.length != 0){
   res.json(resullt)
