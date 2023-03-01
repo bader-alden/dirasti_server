@@ -39,6 +39,31 @@ router.post('/login', function(req, res, next) {
     
      });
     });
+router.post('/login_id', function(req, res, next) {
+  var queryData=url.parse(req.url,true).query;
+      connection.query("SELECT * FROM user WHERE user_id='"+queryData['user_id']+"' ",function(error,resultts,fields){
+        console.log(resultts);                                       
+  if(resultts.length!=0){                                              
+   var json_data = JSON.parse(JSON.stringify(resultts[0])); //ليش ما حطيت ال0 هون            
+      console.log(json_data['secret_code'])   
+      if (json_data['secret_code']==queryData['secret_code']){  
+       connection.query("UPDATE user SET secret_code='"+queryData['secret_code']+"' WHERE user_id='"+queryData['user_id']+"' ",function(error,results,fields){
+        console.log(results);
+        console.log(200);
+        // res.json("bravvvvvo best🔥🔥🔥")
+         res.json(resultts);
+            });
+      }
+     if  (queryData['secret_code']!=json_data['secret_code']&&json_data['secret_code']!='restart'){
+        console.log(404);
+        res.json('error1');
+      }
+ }else{   
+         res.json('error2');
+ }
+    
+     });
+    });
 router.post('/update_account', function(req, res, next) {
     var queryData=url.parse(req.url,true).query;
     connection.query("UPDATE user SET email ='"+queryData['email']+"', mobile_id='"+queryData['mobile_id']+"', is_male= '"+queryData['is_male']+"',grade= '"+queryData['grade']+"' WHERE secret_code="+queryData['secret_code']+" ",function(error,results,fields){
