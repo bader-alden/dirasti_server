@@ -12,7 +12,7 @@ const connection = mysql.createConnection({
 });
 connection.connect();
 
-router.get('/', function(req, res, next) {
+router.get('/courrs', function(req, res, next) {
   const queryData = url.parse(req.url, true).query;
   connection.query("SELECT grade FROM  user WHERE user_id='"+queryData['user_id']+"'" ,function(error,results) {
       console.log(results);
@@ -125,10 +125,6 @@ router.get('/my_course', function(req, res, next) {
         console.log("notfound10");
         //res.send("notfound10");
       }
-        
-        
-        
-        
         
       }   
     }); 
