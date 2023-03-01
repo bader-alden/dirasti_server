@@ -25,19 +25,13 @@ router.get('/privacy_policy', function(req, res, next) {
       });
   })
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+router.get('/Frequently_questions', function(req, res, next) {
+  const queryData = url.parse(req.url, true).query;
+  connection.query("SELECT `id`, `questions`, `answer` FROM Frequently_questions" ,function(error,results) {
+      console.log(results);
+       res.send(results);
+      });
+  })
 
 
 
