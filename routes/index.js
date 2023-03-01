@@ -131,19 +131,6 @@ router.get('/my_course', function(req, res, next) {
 
     }); 
 
-// function mycourse_myfile(list , queryData){
-//   for(var i=0 ;i<list.length ; i++){
-//       console.log(list);
-//        var m=list[i].split("|")
-//      m[0]==queryData['is_course'] &&
-//          m[1]==queryData['grade'] && 
-//          m[2]==queryData['subject'] && 
-//          m[3]==queryData['teacher_name'] && 
-//          m[4]==queryData['course']
-       
-//        return true;
-//        }
-     
-// }
+
   //                                                               🧿 ملك خاص ل اسراء 🧿
 module.exports = router;
