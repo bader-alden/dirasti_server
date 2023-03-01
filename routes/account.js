@@ -47,12 +47,8 @@ router.post('/login_id', function(req, res, next) {
    var json_data = JSON.parse(JSON.stringify(resultts[0])); //ليش ما حطيت ال0 هون            
       console.log(json_data['secret_code'])   
       if (json_data['secret_code']==queryData['secret_code']){  
-       connection.query("UPDATE user SET secret_code='"+queryData['secret_code']+"' WHERE user_id='"+queryData['user_id']+"' ",function(error,results,fields){
-        console.log(results);
-        console.log(200);
         // res.json("bravvvvvo best🔥🔥🔥")
          res.json(resultts);
-            });
       }
      if  (queryData['secret_code']!=json_data['secret_code']&&json_data['secret_code']!='restart'){
         console.log(404);
