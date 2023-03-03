@@ -39,8 +39,21 @@ router.post('/', function(req, res, next) {
 
 router.get('/', function(req, res, next) {
     var queryData=url.parse(req.url,true).query;
- connection.query("SELECT  `name_copon`, `is_open`, `uid_copon`, `price` FROM copon  WHERE uid_copon='"+queryData['uid_copon']+"' and ",function(error,resullt,fields){          
- console.log(resullt)
+ connection.query("SELECT  `list_cours`,`name_copon`, `is_open`, `uid_copon`, `price` FROM copon  WHERE uid_copon='"+queryData['uid_copon']+"' and ",function(error,resullt,fields){          
+ console.log(resullt) 
+   var json_data = JSON.parse(JSON.stringify(resullt))[0]['list_cours']
+      console.log(json_data)
+     var t = json_data.toString().split(",")
+     var m=my[i].split("|")
+    var type = m[0]
+    var num = m[4] 
+      res.send(result);
+    }else {
+      res.send("notfound");
+    }
+   });      
+})
+  
 if(resullt.length != 0){
   res.json(resullt)
 }else{
