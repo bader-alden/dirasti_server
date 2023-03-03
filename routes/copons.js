@@ -39,29 +39,35 @@ router.post('/', function(req, res, next) {
 
 router.get('/', function(req, res, next) {
     var queryData=url.parse(req.url,true).query;
- connection.query("SELECT  `list_cours`,`name_copon`, `is_open`, `uid_copon`, `price` FROM copon  WHERE uid_copon='"+queryData['uid_copon']+"' and ",function(error,resullt,fields){          
- console.log(resullt) 
+ connection.query("SELECT `list_cours`,`name_copon`, `is_open`, `uid_copon`, `price` FROM copon  WHERE uid_copon='"+queryData['uid_copon']+"' ",function(error,resullt,fields){          
+if(resullt.length != 0){
    var json_data = JSON.parse(JSON.stringify(resullt))[0]['list_cours']
       console.log(json_data)
-  //   var t = json_data.toString().split(","
-  //   var m=my[i].split("|")
+      for(var i=0 ;i<json_data.length ; i++){
+      console.log(json_data);
+   var m=json_data[i].split("|") 
+      if (m[1]==queryData['grade']){
+         res.send(resullt)
+        }else{
+        res.send("error")
+    }
+      }
+}else{
+  res.send("notfound")
+}//🔥🔥🔥🔥🙃  جربي
+      });       //ok
+  //   var m=json_data[i].split("|")
   //  var type = m[0]
   //  var num = m[4] 
   //    res.send(result);//منكسب زيارتك 
   //  }else {   😝 لاتتركي السيرفر واقف
  //     res.send("notfound");
  //   }
- //  });      //ليش لعبتلي فيه انا كتبت كمان  
-//})
+ //  });       
+})
   
-if(resullt.length != 0){
-  res.json(resullt)
-}else{
-  res.send("notfound")
-}
-    });
 
-   });
+   
 
 
 
