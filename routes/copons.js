@@ -39,22 +39,18 @@ router.post('/', function(req, res, next) {
 
 router.get('/', function(req, res, next) {
     var queryData=url.parse(req.url,true).query;
- connection.query("SELECT `list_cours`,`name_copon`, `is_open`, `uid_copon`, `price` FROM copon  WHERE uid_copon='"+queryData['uid_copon']+"' ",function(error,resullt,fields){          
+ connection.query("SELECT `list_cours`,`name_copon`,`grade` ,`is_open`, `uid_copon`, `price` FROM copon  WHERE uid_copon='"+queryData['uid_copon']+"' ",function(error,resullt,fields){          
 if(resullt.length != 0){
-   var json_data = JSON.parse(JSON.stringify(resullt))[0]['list_cours']
-      console.log(json_data)
-     var m=json_data[i].split("|") 
-      for(var i=0 ;i<m.length ; i++){
-      console.log(m);
-      if (m[1]==queryData['grade']){
+   var json_data = JSON.parse(JSON.stringify(resullt))[0]
+      if (json_data['grade']==queryData['grade']){
+        console.log(resullt)
          res.send(resullt)
         }else{
         res.send("error")
     }
-      }
-}else{
-  res.send("notfound")
-}//🔥🔥🔥🔥🙃  جربي
+      }else{
+  res.send("notfound") //جربت 
+}//    جربي    تمام
       });       //ok
   //   var m=json_data[i].split("|")
   //  var type = m[0]
