@@ -43,9 +43,9 @@ router.get('/', function(req, res, next) {
 if(resullt.length != 0){
    var json_data = JSON.parse(JSON.stringify(resullt))[0]['list_cours']
       console.log(json_data)
-      for(var i=0 ;i<json_data.length ; i++){
-      console.log(json_data);
-   var m=json_data[i].split("|") 
+     var m=json_data[i].split("|") 
+      for(var i=0 ;i<m.length ; i++){
+      console.log(m);
       if (m[1]==queryData['grade']){
          res.send(resullt)
         }else{
