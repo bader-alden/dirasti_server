@@ -43,16 +43,16 @@ router.get('/', function(req, res, next) {
  console.log(resullt) 
    var json_data = JSON.parse(JSON.stringify(resullt))[0]['list_cours']
       console.log(json_data)
-     var t = json_data.toString().split(",")
-     var m=my[i].split("|")
-    var type = m[0]
-    var num = m[4] 
-      res.send(result);
-    }else {
-      res.send("notfound");
-    }
-   });      
-})
+  //   var t = json_data.toString().split(","
+  //   var m=my[i].split("|")
+  //  var type = m[0]
+  //  var num = m[4] 
+  //    res.send(result);//منكسب زيارتك 
+  //  }else {   😝 لاتتركي السيرفر واقف
+ //     res.send("notfound");
+ //   }
+ //  });      //ليش لعبتلي فيه انا كتبت كمان  
+//})
   
 if(resullt.length != 0){
   res.json(resullt)
