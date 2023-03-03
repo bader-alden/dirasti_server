@@ -39,7 +39,7 @@ router.post('/', function(req, res, next) {
 
 router.get('/', function(req, res, next) {
     var queryData=url.parse(req.url,true).query;
- connection.query("SELECT  `name_copon`, `is_open`, `uid_copon`, `price` FROM copon  WHERE uid_copon='"+queryData['uid_copon']+"' ",function(error,resullt,fields){          
+ connection.query("SELECT  `name_copon`, `is_open`, `uid_copon`, `price` FROM copon  WHERE uid_copon='"+queryData['uid_copon']+"' and ",function(error,resullt,fields){          
  console.log(resullt)
 if(resullt.length != 0){
   res.json(resullt)
