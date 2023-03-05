@@ -106,7 +106,7 @@ router.get('/my_course', function(req, res, next) {
        num_of_file++
      }
     if(queryData['is_course']==1 && m[0]==1){
-    connection.query('SELECT `teacher_name`, `subject`, `price`, `photo`, `grade`, `part`, `number_hours` FROM course WHERE  id="'+num+'"', function (error, resulte) {
+    connection.query('SELECT * FROM course WHERE  id="'+num+'"', function (error, resulte) {
          console.log(error);
          console.log(resulte);
        all.push(resulte);
@@ -116,7 +116,7 @@ router.get('/my_course', function(req, res, next) {
       }
     });
     }else if(queryData['is_course']==0 && m[0]==0){
-     connection.query('SELECT `teacher_name`, `subject`, `price`, `photo`, `grade`, `number_of_pages`, `is_course` FROM file WHERE    id="'+num+'"', function (error, results) {
+     connection.query('SELECT * FROM file WHERE    id="'+num+'"', function (error, results) {
        all.push(results);
        if( num_of_file == all.length ){
          console.log(all);
