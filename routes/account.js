@@ -62,8 +62,10 @@ router.post('/login_id', function(req, res, next) {
     });
 router.post('/update_account', function(req, res, next) {
     var queryData=url.parse(req.url,true).query;
-    connection.query("UPDATE user SET email ='"+queryData['email']+"', mobile_id='"+queryData['mobile_id']+"', is_male= '"+queryData['is_male']+"',grade= '"+queryData['grade']+"' WHERE secret_code="+queryData['secret_code']+" ",function(error,results,fields){
-        if(!error){
+    connection.query("UPDATE user SET name ='"+queryData['name']+"', email ='"+queryData['email']+"', mobile_id='"+queryData['mobile_id']+"', is_male= '"+queryData['is_male']+"',grade= '"+queryData['grade']+"' WHERE secret_code='"+queryData['secret_code']+"' ",function(error,results,fields){
+      console.log(results)  
+      console.log(error)  
+      if(!error){
           res.json(true);
         }else{
           res.json(false);
