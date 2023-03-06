@@ -46,26 +46,38 @@ if(resullt.length != 0){
         console.log(resullt)
          res.send(resullt)
         }else{
-        res.send("error")
+        res.send("error10")
     }
       }else{
   res.send("notfound") //جربت 
 }//    جربي    تمام
-      });       //ok
-  //   var m=json_data[i].split("|")
-  //  var type = m[0]
-  //  var num = m[4] 
-  //    res.send(result);//منكسب زيارتك 
-  //  }else {   😝 لاتتركي السيرفر واقف
- //     res.send("notfound");
- //   }
- //  });       
+      });       //ok   
 })
-  
+ router.get('/exam', function(req, res, next) {
+    var queryData=url.parse(req.url,true).query;
+ connection.query("SELECT `id`, `name`, `grade`, `subject` FROM `exam`  WHERE grade='"+queryData['grade']+"' and grade='"+queryData['grade']+"' ",function(error,resullt,fields){          
+ 
 
    
 
 
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
 
 
 module.exports = router;
