@@ -53,13 +53,16 @@ if(resullt.length != 0){
 }//    جربي    تمام
       });       //ok   
 })
+
+
  router.get('/exam', function(req, res, next) {
     var queryData=url.parse(req.url,true).query;
  connection.query("SELECT `id`, `name` FROM exam  WHERE grade='"+queryData['grade']+"' and subject='"+queryData['subject']+"' ",function(error,resullt,fields){          
-    var json_data = JSON.parse(JSON.stringify(resullt))[0];
-    connection.query("SELECT `question`, `Answer1`, `Answer2`, `Answer3`, `Answer4`, `exam` FROM all_tests WHERE exam='"+json_data['id']+"' and subject='"+json_data['subject']+"'",function(error,result,fields){ 
-   console.logs(result);
-    res.send(result);
+    var json_data = JSON.parse(JSON.stringify(resullt));
+ connection.query("SELECT `question`, `Answer1`, `Answer2`, `Answer3`, `Answer4`, `exam` FROM all_tests WHERE exam='"+json_data[0]['id']+"' and subject='"+json_data[0]['subject']+"'",function(error,result,fields){ 
+     console.log(error);
+     console.log(result);
+     res.send(result);
  });
  });
  });
