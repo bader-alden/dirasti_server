@@ -96,28 +96,33 @@ router.get('/my_course', function(req, res, next) {
     var num_of_course = 0
     var num_of_file = 0
       for(var i=0 ;i<my.length ; i++){
-      console.log(my);
+    //  console.log(my);
     var m=my[i].split("|")
     var type = m[0]
     var num = m[4] 
       if (m[0]==1){
        num_of_course++
-      }else if (m[0]==0) {
-       num_of_file++
-     }
+      }else if (m[0]===0) {
+        num_of_file++
+     console.log(" num_of_file     "+num_of_file+"  "+m)
+      }
     if(queryData['is_course']==1 && m[0]==1){
     connection.query('SELECT * FROM course WHERE  id="'+num+'"', function (error, resulte) {
          console.log(error);
          console.log(resulte);
-       all.push(resulte);
+      if(resulte!=[]){
+         all.push(resulte);
+      }
       if( num_of_course == all.length ){
          console.log(all);
          res.send(all)
       }
     });
     }else if(queryData['is_course']==0 && m[0]==0){
+      console.log(m)
      connection.query('SELECT * FROM file WHERE    id="'+num+'"', function (error, results) {
        console.log(results)
+       
        all.push(results);
        if( num_of_file == all.length ){
          console.log(all);
@@ -128,7 +133,7 @@ router.get('/my_course', function(req, res, next) {
         console.log("notfound10");
         //res.send("notfound10");
       }
-        
+        console.log("---------------------------")
       }   
     }); 
 
