@@ -102,7 +102,7 @@ router.get('/my_course', function(req, res, next) {
     var num = m[4] 
       if (m[0]==1){
        num_of_course++
-      }else{
+      }else if (m[0]==0) {
        num_of_file++
      }
     if(queryData['is_course']==1 && m[0]==1){
@@ -117,6 +117,7 @@ router.get('/my_course', function(req, res, next) {
     });
     }else if(queryData['is_course']==0 && m[0]==0){
      connection.query('SELECT * FROM file WHERE    id="'+num+'"', function (error, results) {
+       console.log(results)
        all.push(results);
        if( num_of_file == all.length ){
          console.log(all);
