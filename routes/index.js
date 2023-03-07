@@ -100,13 +100,14 @@ router.get('/my_course', function(req, res, next) {
     var m=my[i].split("|")
     var type = m[0]
     var num = m[4] 
-      if (m[0]==1){
+      if (parseInt(m[0])==1){
        num_of_course++
-      }else if (m[0]===0) {
+      }else if (parseInt(m[0])==0) {
         num_of_file++
-     console.log(" num_of_file     "+num_of_file+"  "+m)
+     console.log(" num_of_file     "+num_of_file+"  "+m[0])
+     console.log(parseInt(m[0])==0)
       }
-    if(queryData['is_course']==1 && m[0]==1){
+    if(queryData['is_course']==1 && parseInt(m[0])==1){
     connection.query('SELECT * FROM course WHERE  id="'+num+'"', function (error, resulte) {
          console.log(error);
          console.log(resulte);
@@ -114,11 +115,12 @@ router.get('/my_course', function(req, res, next) {
          all.push(resulte);
       }
       if( num_of_course == all.length ){
+      
          console.log(all);
          res.send(all)
       }
     });
-    }else if(queryData['is_course']==0 && m[0]==0){
+    }else if(queryData['is_course']==0 &&parseInt(m[0])==0){
       console.log(m)
      connection.query('SELECT * FROM file WHERE    id="'+num+'"', function (error, results) {
        console.log(results)
