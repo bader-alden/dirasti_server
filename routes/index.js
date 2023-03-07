@@ -153,6 +153,11 @@ router.get('/file', function(req, res, next) {
     var queryData = url.parse(req.url, true).query
     connection.query("SELECT `teacher_name`, `price`, `photo`, `number_of_pages`, `name`, `des` FROM file WHERE subject='"+queryData['subject']+"' and grade='"+queryData['grade']+"'and teacher_name='"+queryData['teacher_name']+"'", function (error, result) {
       console.log(result);
+      
+      
+      
+      router.get('/file', function(req, res, next) {
+    var queryData = url.parse(req.url, true).query
     connection.query("SELECT `course_file` FROM user WHERE user_id='"+queryData['user_id']+"'", function (error, resultt) {        
      var json_data = JSON.parse(JSON.stringify(resultt))[0]['course_file']
       console.log(json_data)
