@@ -152,9 +152,32 @@ router.get('/all_tests', function(req, res, next) {
 router.get('/file', function(req, res, next) {
     var queryData = url.parse(req.url, true).query
     connection.query("SELECT `teacher_name`, `price`, `photo`, `number_of_pages`, `name`, `des` FROM file WHERE subject='"+queryData['subject']+"' and grade='"+queryData['grade']+"'and teacher_name='"+queryData['teacher_name']+"'", function (error, result) {
-       console.log(error);
-       console.log(result);
-       res.json(result);
+      console.log(result);
+    connection.query("SELECT `course_file` FROM user WHERE user_id='"+queryData['user_id']+"'", function (error, resultt) {        
+     var json_data = JSON.parse(JSON.stringify(resultt))[0]['course_file']
+      console.log(json_data)
+     var t = json_data.toString().split(",")
+    if(check_file(t,queryData)){
+      res.send(result);
+    }else {
+      res.send("notfound");
+    }
+   });      
+function check_file(list , queryData){
+  for(var i=0 ;i<list.length ; i++){
+      console.log(list);
+       var m=list[i].split("|")
+     if(m[0]==queryData['is_course'] &&
+         m[1]==queryData['grade'] && 
+         m[2]==queryData['subject'] && 
+         m[3]==queryData['teacher_name'] && 
+         m[4]==queryData['course']
+       ){
+       return true;
+       }
+     }
+  return false;
+}
     });
 })
 
