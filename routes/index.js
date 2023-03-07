@@ -149,7 +149,14 @@ router.get('/all_tests', function(req, res, next) {
      res.json(result);
  });
  });
-
+router.get('/file', function(req, res, next) {
+    var queryData = url.parse(req.url, true).query
+    connection.query("SELECT * FROM file WHERE subject='"+queryData['subject']+"' and grade='"+queryData['grade']+"'and teacher_name='"+queryData['teacher_name']+"'", function (error, result) {
+       console.log(error);
+       console.log(result);
+       res.json(result);
+    });
+})
 
   //                                                               🧿 ملك خاص ل اسراء 🧿
 module.exports = router;
