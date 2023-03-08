@@ -36,17 +36,48 @@ router.post('/Frequently_questions', function(req, res, next) {
       });
   })
 
-router.post('/Frequently_questions', function(req, res, next) {
+router.delete('/Frequently_questions', function(req, res, next) {
   const queryData = url.parse(req.url, true).query;
-  connection.query("INSERT INTO Frequently_questions (`questions`, `answer`) VALUES '"+queryData['questions']+"','"+queryData['answer']+"')" ,function(error,results) {
+  connection.query("DELETE FROM Frequently_questions WHERE id='"+queryData['id']+"'" ,function(error,results) {
       console.log(results);
        res.send(results);
       });
   })
 
-router.post('/Frequently_questions', function(req, res, next) {
+router.update('/Frequently_questions', function(req, res, next) {
   const queryData = url.parse(req.url, true).query;
-  connection.query("INSERT INTO Frequently_questions (`questions`, `answer`) VALUES ('"+queryData['questions']+"','"+queryData['answer']+"')" ,function(error,results) {
+  connection.query("UPDATE Frequently_questions SET `questions`='"+queryData['questions']+"',`answer`='"+queryData['answer']+"' WHERE id='"+queryData['id']+"'" ,function(error,results) {
+      console.log(results);
+       res.send(results);
+      });
+  })
+
+router.update('/privacy_policy', function(req, res, next) {
+  const queryData = url.parse(req.url, true).query;
+  connection.query("UPDATE privacy_policy SET `text`='"+queryData['text']+"' WHERE id='"+queryData['id']+"'" ,function(error,results) {
+      console.log(results);
+       res.send(results);
+      });
+  })
+router.post('/Coupon_points _of_sale', function(req, res, next) {
+  const queryData = url.parse(req.url, true).query;
+  connection.query("INSERT INTO Coupon_points _of_sale (`address`, `lat`, `lang`) VALUES ('"+queryData['address']+"','"+queryData['lat']+"','"+queryData['lang']+"')" ,function(error,results) {
+      console.log(results);
+       res.send(results);
+      });
+  })
+
+router.delete('/Coupon_points _of_sale', function(req, res, next) {
+  const queryData = url.parse(req.url, true).query;
+  connection.query("DELETE FROM Coupon_points _of_sale WHERE id='"+queryData['id']+"'" ,function(error,results) {
+      console.log(results);
+       res.send(results);
+      });
+  })
+
+router.update('/Coupon_points _of_sale', function(req, res, next) {
+  const queryData = url.parse(req.url, true).query;
+  connection.query("UPDATE Coupon_points _of_sale SET `questions`='"+queryData['questions']+"',`answer`='"+queryData['answer']+"' WHERE id='"+queryData['id']+"'" ,function(error,results) {
       console.log(results);
        res.send(results);
       });
