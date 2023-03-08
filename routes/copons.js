@@ -53,13 +53,7 @@ router.get('/', function(req, res, next) {
     if(check_course(t,json_data)){
       res.send('error1');
     }else { 
-   if (json_datta['grade']==json_dat['grade']){
-     console.log("-----------------------")
-     console.log(json_datta)
-     console.log(json_datta[0]['grade'])
-     console.log(json_dat)
-     console.log(json_dat[0]['grade'])
-      console.log("-----------------------")
+   if (json_datta==json_dat){
         console.log(resullt)
          res.send(resullt)
      }else{
