@@ -142,7 +142,7 @@ router.get('/my_course', function(req, res, next) {
     }); 
 router.get('/exam', function(req, res, next) {
     var queryData=url.parse(req.url,true).query;
- connection.query("SELECT `id`, `name` FROM exam  WHERE grade='"+queryData['grade']+"' and subject='"+queryData['subject']+"' ",function(error,resullt,fields){          
+ connection.query("SELECT * FROM exam  WHERE grade='"+queryData['grade']+"' and subject='"+queryData['subject']+"' ",function(error,resullt,fields){          
      console.log(error);
      console.log(resullt);
      res.json(resullt);
