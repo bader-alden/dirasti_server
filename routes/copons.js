@@ -41,20 +41,26 @@ router.get('/', function(req, res, next) {
    var queryData=url.parse(req.url,true).query;
  connection.query("SELECT `list_cours`,`name_copon`,`grade` ,`is_open`, `uid_copon`, `price` FROM copon  WHERE uid_copon='"+queryData['uid_copon']+"' ",function(error,resullt,fields){          
    var json_data = JSON.parse(JSON.stringify(resullt))[0];
- connection.query("SELECT `grade`,`course_file`FROM user WHERE user_id='"+queryData['user_id']+"'",function(error,result,fields){ 
+   if(resullt.length != 0){
+   connection.query("SELECT `grade`,`course_file`FROM user WHERE user_id='"+queryData['user_id']+"'",function(error,result,fields){ 
      var json_dat = JSON.parse(JSON.stringify(result))[0]['grade']; 
      var json_dataa = JSON.parse(JSON.stringify(result))[0]['course_file']
       console.log(json_dataa)
      var t = json_dataa.toString().split(",")
-    if(check_course(t,queryData)){
+    if(check_course(t,queryData) && json_data['grade']==json_dat['grade']){
       res.send(result);
     }else {
       res.send("notfound");
     }
-   });      
-})
-  });
-function check_course(list , queryData){
+   });
+    }else{
+    res.send("notfound")  
+}
+   });         
+});
+ }); 
+   
+  function check_course(list , queryData){
   for(var i=0 ;i<list.length ; i++){
       console.log(list);
        var m=list[i].split("|")
@@ -68,69 +74,6 @@ function check_course(list , queryData){
        }
      }
   return false;
-}
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   if(resullt.length != 0){
-   if (json_data['grade']==json_dat['grade']){
-        console.log(resullt)
-         res.send(resullt)
-     }else{
-        res.send("error10")
-    }
-      }else{
-  res.send("notfound") //جربت 
-}//    جربي    تمام
-      });       //ok   
-})
-});
- 
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-
-
+} 
+  
 module.exports = router;
