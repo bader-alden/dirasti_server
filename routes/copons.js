@@ -47,18 +47,27 @@ router.get('/', function(req, res, next) {
      var json_dataa = JSON.parse(JSON.stringify(result))[0]['course_file']
       console.log(json_dataa)
      var t = json_dataa.toString().split(",")
-    if(check_course(t,queryData) && json_data['grade']==json_dat['grade']){
-      res.send(result);
-    }else {
-      res.send("notfound");
+    if(check_course(t,queryData)){
+      res.send('الكورس مفعل مسبقا ');
+    }else { //هون فيني هيك حط ؟
+   if (json_data['grade']==json_dat['grade']){
+        console.log(resullt)
+         res.send(resullt)
+        res.send('تم تفعيل الكورس')
+     }else{
+        res.send("الكورس غير  متوافق مو الصف")
+    }
     }
    });
-    }else{
-    res.send("notfound")  
+   
+     
+    
+   }else{
+  res.send("notfound") 
 }
    });         
 });
- }); 
+  
    
   function check_course(list , queryData){
   for(var i=0 ;i<list.length ; i++){
