@@ -72,7 +72,7 @@ router.get('/', function(req, res, next) {
   for(var i=0 ;i<list.length ; i++){
       console.log(list);
        var m=list[i].split("|")
-       var l= json_data[i].split("|")
+       var l= json_data.split("|")
      if(m[0]==l[0] &&
          m[1]==l[1]  && 
          m[2]==l[2]  && 
