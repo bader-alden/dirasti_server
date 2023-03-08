@@ -47,15 +47,14 @@ router.get('/', function(req, res, next) {
      var json_dataa = JSON.parse(JSON.stringify(result))[0]['course_file']
       console.log(json_dataa)
      var t = json_dataa.toString().split(",")
-    if(check_course(t,queryData)){
-      res.send('الكورس مفعل مسبقا ');
-    }else { //هون فيني هيك حط ؟
+    if(check_course(t,json_data)){
+      res.send('error1');
+    }else { 
    if (json_data['grade']==json_dat['grade']){
         console.log(resullt)
          res.send(resullt)
-        res.send('تم تفعيل الكورس')
      }else{
-        res.send("الكورس غير  متوافق مو الصف")
+        res.send('error10')
     }
     }
    });
@@ -73,11 +72,12 @@ router.get('/', function(req, res, next) {
   for(var i=0 ;i<list.length ; i++){
       console.log(list);
        var m=list[i].split("|")
-     if(m[0]==json_data['is_course'] &&
-         m[1]==json_data['grade'] && 
-         m[2]==json_data['subject'] && 
-         m[3]==json_data['teacher_name'] && 
-         m[4]==json_data['course']
+       var l= json_data[i].split("|")
+     if(m[0]==l[0] &&
+         m[1]==l[1]  && 
+         m[2]==l[2]  && 
+         m[3]==l[3]  && 
+         m[4]==l[4] 
        ){
        return true;
        }
