@@ -40,7 +40,8 @@ router.post('/', function(req, res, next) {
 router.get('/', function(req, res, next) {
    var queryData=url.parse(req.url,true).query;
  connection.query("SELECT `list_cours`,`name_copon`,`grade` ,`is_open`, `uid_copon`, `price` FROM copon  WHERE uid_copon='"+queryData['uid_copon']+"' ",function(error,resullt,fields){          
-   var json_data = JSON.parse(JSON.stringify(resullt))[0]['course_file'];
+   var json_data = JSON.parse(JSON.stringify(resullt))[0]['list_cours'];
+   var json_datta = JSON.parse(JSON.stringify(resullt))[0]['grade']; 
    if(resullt.length != 0){
    connection.query("SELECT `grade`,`course_file`FROM user WHERE user_id='"+queryData['user_id']+"'",function(error,result,fields){ 
      var json_dat = JSON.parse(JSON.stringify(result))[0]['grade']; 
@@ -50,7 +51,7 @@ router.get('/', function(req, res, next) {
     if(check_course(t,json_data)){
       res.send('error1');
     }else { 
-   if (json_data['grade']==json_dat['grade']){
+   if (json_datta['grade']==json_dat['grade']){
         console.log(resullt)
          res.send(resullt)
      }else{
