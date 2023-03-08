@@ -179,6 +179,8 @@ console.log(result);
     if(check_file(t,queryData)){
       res.send(result);
     }else {
+      console.log(t)
+      console.log(queryData)
       res.send("notfound");
     }
    });  
