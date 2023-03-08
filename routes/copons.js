@@ -38,14 +38,16 @@ router.post('/', function(req, res, next) {
    });
 
 router.get('/', function(req, res, next) {
-    var queryData=url.parse(req.url,true).query;
+   var queryData=url.parse(req.url,true).query;
  connection.query("SELECT `list_cours`,`name_copon`,`grade` ,`is_open`, `uid_copon`, `price` FROM copon  WHERE uid_copon='"+queryData['uid_copon']+"' ",function(error,resullt,fields){          
-if(resullt.length != 0){
    var json_data = JSON.parse(JSON.stringify(resullt))[0];
-      if (json_data['grade']==queryData['grade']){
+ connection.query("SELECT `grade` FROM user WHERE user_id='"+queryData['user_id']+"'",function(error,result,fields){ 
+   var json_dat = JSON.parse(JSON.stringify(result))[0];
+   if(resullt.length != 0){
+   if (json_data['grade']==json_dat['grade']){
         console.log(resullt)
          res.send(resullt)
-        }else{
+     }else{
         res.send("error10")
     }
       }else{
@@ -53,7 +55,7 @@ if(resullt.length != 0){
 }//    جربي    تمام
       });       //ok   
 })
-
+});
  
    
    
