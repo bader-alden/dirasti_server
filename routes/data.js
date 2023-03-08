@@ -24,7 +24,7 @@ router.get('/privacy_policy', function(req, res, next) {
        res.send(results);
       });
   })
-
+//hi
 router.get('/Frequently_questions', function(req, res, next) {
   const queryData = url.parse(req.url, true).query;
   connection.query("SELECT `id`, `questions`, `answer` FROM Frequently_questions" ,function(error,results) {

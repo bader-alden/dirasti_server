@@ -27,7 +27,7 @@ var queryData=url.parse(req.url,true).query;
        res.json(results);
   });
    });
-
+// hi
 router.post('/Frequently_questions', function(req, res, next) {
   const queryData = url.parse(req.url, true).query;
   connection.query("INSERT INTO Frequently_questions (`questions`, `answer`) VALUES ('"+queryData['questions']+"','"+queryData['answer']+"')" ,function(error,results) {
@@ -44,15 +44,20 @@ router.delete('/Frequently_questions', function(req, res, next) {
       });
   })
 
-router.update('/Frequently_questions', function(req, res, next) {
+router.put('/Frequently_questions', function(req, res, next) {
   const queryData = url.parse(req.url, true).query;
   connection.query("UPDATE Frequently_questions SET `questions`='"+queryData['questions']+"',`answer`='"+queryData['answer']+"' WHERE id='"+queryData['id']+"'" ,function(error,results) {
       console.log(results);
        res.send(results);
       });
-  })
-
-router.update('/privacy_policy', function(req, res, next) {
+  })// there is no function named update 
+// rename it to put and the error will be gone 
+// ok ??
+//have a good day best
+// very good best
+// go and fix all mistake 
+//ok😀   👍😁 🔥🔥🔥
+router.put('/privacy_policy', function(req, res, next) {
   const queryData = url.parse(req.url, true).query;
   connection.query("UPDATE privacy_policy SET `text`='"+queryData['text']+"' WHERE id='"+queryData['id']+"'" ,function(error,results) {
       console.log(results);
@@ -75,9 +80,32 @@ router.delete('/Coupon_points _of_sale', function(req, res, next) {
       });
   })
 
-router.update('/Coupon_points _of_sale', function(req, res, next) {
+router.put('/Coupon_points _of_sale', function(req, res, next) {
   const queryData = url.parse(req.url, true).query;
-  connection.query("UPDATE Coupon_points _of_sale SET `questions`='"+queryData['questions']+"',`answer`='"+queryData['answer']+"' WHERE id='"+queryData['id']+"'" ,function(error,results) {
+  connection.query("UPDATE Coupon_points _of_sale SET `address`='"+queryData['address']+"',`lat`='"+queryData['lat']+"' ,`lang`='"+queryData['lang']+"' WHERE id='"+queryData['id']+"'" ,function(error,results) {
+      console.log(results);
+       res.send(results);
+      });
+  })
+router.post('/Social Media', function(req, res, next) {
+  const queryData = url.parse(req.url, true).query;
+  connection.query("INSERT INTO Social Media (`name`, `photo`, `link`) VALUES ('"+queryData['name']+"','"+queryData['photo']+"','"+queryData['link']+"')" ,function(error,results) {
+      console.log(results);
+       res.send(results);
+      });
+  })
+
+router.delete('/Social Media', function(req, res, next) {
+  const queryData = url.parse(req.url, true).query;
+  connection.query("DELETE FROM Social Media WHERE id='"+queryData['id']+"'" ,function(error,results) {
+      console.log(results);
+       res.send(results);
+      });
+  })
+
+router.put('/Social Media', function(req, res, next) {
+  const queryData = url.parse(req.url, true).query;
+  connection.query("UPDATE Social Media SET `name`='"+queryData['name']+"',`photo`='"+queryData['photo']+"' ,`link`='"+queryData['link']+"' WHERE id='"+queryData['id']+"'" ,function(error,results) {
       console.log(results);
        res.send(results);
       });
