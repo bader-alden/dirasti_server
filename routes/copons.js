@@ -40,7 +40,7 @@ router.post('/', function(req, res, next) {
 router.get('/', function(req, res, next) {
    var queryData=url.parse(req.url,true).query;
  connection.query("SELECT `list_cours`,`name_copon`,`grade` ,`is_open`, `uid_copon`, `price` FROM copon  WHERE uid_copon='"+queryData['uid_copon']+"' ",function(error,resullt,fields){          
-   var json_data = JSON.parse(JSON.stringify(resullt))[0];
+   var json_data = JSON.parse(JSON.stringify(resullt))[0]['course_file'];
    if(resullt.length != 0){
    connection.query("SELECT `grade`,`course_file`FROM user WHERE user_id='"+queryData['user_id']+"'",function(error,result,fields){ 
      var json_dat = JSON.parse(JSON.stringify(result))[0]['grade']; 
@@ -69,15 +69,15 @@ router.get('/', function(req, res, next) {
 });
   
    
-  function check_course(list , queryData){
+  function check_course(list , json_data){
   for(var i=0 ;i<list.length ; i++){
       console.log(list);
        var m=list[i].split("|")
-     if(m[0]==queryData['is_course'] &&
-         m[1]==queryData['grade'] && 
-         m[2]==queryData['subject'] && 
-         m[3]==queryData['teacher_name'] && 
-         m[4]==queryData['course']
+     if(m[0]==json_data['is_course'] &&
+         m[1]==json_data['grade'] && 
+         m[2]==json_data['subject'] && 
+         m[3]==json_data['teacher_name'] && 
+         m[4]==json_data['course']
        ){
        return true;
        }
