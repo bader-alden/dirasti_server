@@ -28,6 +28,27 @@ var queryData=url.parse(req.url,true).query;
   });
    });
 
+router.post('/Frequently_questions', function(req, res, next) {
+  const queryData = url.parse(req.url, true).query;
+  connection.query("INSERT INTO Frequently_questions (`questions`, `answer`) VALUES ('"+queryData['questions']+"','"+queryData['answer']+"')" ,function(error,results) {
+      console.log(results);
+       res.send(results);
+      });
+  })
 
+router.post('/Frequently_questions', function(req, res, next) {
+  const queryData = url.parse(req.url, true).query;
+  connection.query("INSERT INTO Frequently_questions (`questions`, `answer`) VALUES '"+queryData['questions']+"','"+queryData['answer']+"')" ,function(error,results) {
+      console.log(results);
+       res.send(results);
+      });
+  })
 
+router.post('/Frequently_questions', function(req, res, next) {
+  const queryData = url.parse(req.url, true).query;
+  connection.query("INSERT INTO Frequently_questions (`questions`, `answer`) VALUES ('"+queryData['questions']+"','"+queryData['answer']+"')" ,function(error,results) {
+      console.log(results);
+       res.send(results);
+      });
+  })
 module.exports = router;
