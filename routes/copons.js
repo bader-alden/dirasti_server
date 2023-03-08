@@ -37,6 +37,8 @@ router.post('/', function(req, res, next) {
    });
    });
 
+
+
 router.get('/', function(req, res, next) {
    var queryData=url.parse(req.url,true).query;
  connection.query("SELECT `list_cours`,`name_copon`,`grade` ,`is_open`, `uid_copon`, `price` FROM copon  WHERE uid_copon='"+queryData['uid_copon']+"' ",function(error,resullt,fields){          
@@ -52,6 +54,12 @@ router.get('/', function(req, res, next) {
       res.send('error1');
     }else { 
    if (json_datta['grade']==json_dat['grade']){
+     console.log("-----------------------")
+     console.log(json_datta)
+     console.log(json_datta[0]['grade'])
+     console.log(json_dat)
+     console.log(json_dat[0]['grade'])
+      console.log("-----------------------")
         console.log(resullt)
          res.send(resullt)
      }else{
@@ -59,17 +67,13 @@ router.get('/', function(req, res, next) {
     }
     }
    });
-   
-     
-    
    }else{
   res.send("notfound") 
 }
    });         
 });
-  
-   
-  function check_course(list , json_data){
+
+function check_course(list , json_data){
   for(var i=0 ;i<list.length ; i++){
       console.log(list);
        var m=list[i].split("|")
