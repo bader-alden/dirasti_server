@@ -151,7 +151,7 @@ router.get('/exam', function(req, res, next) {
  
 router.get('/all_tests', function(req, res, next) {
     var queryData=url.parse(req.url,true).query;
- connection.query("SELECT `question`, `Answer1`, `Answer2`, `Answer3`, `Answer4`, `exam` FROM all_tests WHERE exam='"+queryData['exam']+"' and subject='"+queryData['subject']+"'and subject='"+queryData['subject']+"'",function(error,result,fields){ 
+ connection.query("SELECT * FROM all_tests WHERE exam='"+queryData['exam']+"' and grade='"+queryData['grade']+"'and subject='"+queryData['subject']+"'",function(error,result,fields){ 
      console.log(error);
      console.log(result);
      res.json(result);
