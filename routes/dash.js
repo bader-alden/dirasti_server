@@ -89,7 +89,7 @@ router.put('/Coupon_points_of_sale', function(req, res, next) {
   })
 router.post('/Social_Media', function(req, res, next) {
   const queryData = url.parse(req.url, true).query;
-  connection.query("INSERT INTO Social Media (`name`, `photo`, `link`) VALUES ('"+queryData['name']+"','"+queryData['photo']+"','"+queryData['link']+"')" ,function(error,results) {
+  connection.query("INSERT INTO Social_Media (`name`, `photo`, `link`) VALUES ('"+queryData['name']+"','"+queryData['photo']+"','"+queryData['link']+"')" ,function(error,results) {
       console.log(results);
        res.send(results);
       });
@@ -97,7 +97,7 @@ router.post('/Social_Media', function(req, res, next) {
 
 router.delete('/Social_Media', function(req, res, next) {
   const queryData = url.parse(req.url, true).query;
-  connection.query("DELETE FROM Social Media WHERE id='"+queryData['id']+"'" ,function(error,results) {
+  connection.query("DELETE FROM Social_Media WHERE id='"+queryData['id']+"'" ,function(error,results) {
       console.log(results);
        res.send(results);
       });
@@ -105,7 +105,7 @@ router.delete('/Social_Media', function(req, res, next) {
 
 router.put('/Social_Media', function(req, res, next) {
   const queryData = url.parse(req.url, true).query;
-  connection.query("UPDATE Social Media SET `name`='"+queryData['name']+"',`photo`='"+queryData['photo']+"' ,`link`='"+queryData['link']+"' WHERE id='"+queryData['id']+"'" ,function(error,results) {
+  connection.query("UPDATE Social_Media SET `name`='"+queryData['name']+"',`photo`='"+queryData['photo']+"' ,`link`='"+queryData['link']+"' WHERE id='"+queryData['id']+"'" ,function(error,results) {
       console.log(results);
        res.send(results);
       });

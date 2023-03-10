@@ -35,7 +35,7 @@ router.get('/Frequently_questions', function(req, res, next) {
 
 router.get('/Social_Media', function(req, res, next) {
   const queryData = url.parse(req.url, true).query;
-  connection.query("SELECT * FROM Social Media" ,function(error,results) {
+  connection.query("SELECT * FROM Social_Media" ,function(error,results) {
       console.log(results);
        res.send(results);
       });
@@ -43,7 +43,7 @@ router.get('/Social_Media', function(req, res, next) {
 
 router.get('/the_support', function(req, res, next) {
   const queryData = url.parse(req.url, true).query;
-  connection.query("SELECT * FROM `the_support`" ,function(error,results) {
+  connection.query("SELECT * FROM  the_support " ,function(error,results) {
       console.log(results);
        res.send(results);
       });
