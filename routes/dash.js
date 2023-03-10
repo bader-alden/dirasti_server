@@ -110,4 +110,28 @@ router.put('/Social_Media', function(req, res, next) {
        res.send(results);
       });
   })
+
+router.post('/', function(req, res, next) {
+    var queryData=url.parse(req.url,true).query;
+
+   });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 module.exports = router;
