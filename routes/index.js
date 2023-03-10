@@ -181,13 +181,11 @@ router.get('/file', function(req, res, next) {
 router.get('/my_file', function(req, res, next) {
   var queryData = url.parse(req.url, true).query
 connection.query("SELECT * FROM file WHERE subject='"+queryData['subject']+"' and grade='"+queryData['grade']+"'and teacher_name='"+queryData['teacher_name']+"'", function (error, result) {
-   var json_data = JSON.parse(JSON.stringify(result))[0];
-      console.log(json_data);
-    if(json_dat['is_free']=='1'){
+   var json_dataa = JSON.parse(JSON.stringify(result))[0];
+    if(json_dataa['is_free']=='1'){
       console.log(result);
       res.send(result);
-   }
-     else{
+   }else{
     connection.query("SELECT `course_file` FROM user WHERE user_id='"+queryData['user_id']+"'", function (error, resultt) {        
      var json_data = JSON.parse(JSON.stringify(resultt))[0]['course_file']
       console.log(json_data)
