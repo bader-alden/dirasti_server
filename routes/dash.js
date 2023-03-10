@@ -111,17 +111,41 @@ router.put('/Social_Media', function(req, res, next) {
       });
   })
 
-router.post('/', function(req, res, next) {
-    var queryData=url.parse(req.url,true).query;
-connection.query("INSERT INTO `teatcher`(`teacher_name`, `subject`, `photo`, `grade`) VALUES ('"+queryData['teacher_name']+"','"+queryData['subject']+"','"+queryData['photo']+"','"+queryData['grade']+"')" ,function(error,results) {
+router.post('/insert', function(req, res, next) {
+var queryData=url.parse(req.url,true).query; 
+ connection.query("INSERT INTO "+queryData['table']+" ("+queryData['sql_key']+") VALUES ("+queryData['sql_value']+")  ",function(error,results,fields){
+    if(!error){
+       res.json(results);
+    }else{
+       res.json(error);
+    }
+  });
+});
+
+router.post('/update', function(req, res, next) {
+var queryData=url.parse(req.url,true).query; 
+ connection.query("UPDATE "+queryData['table']+" SET "+queryData['sql_key']+" WHERE id='"+queryData['id']+"'",function(error,results,fields){
+    if(!error){
       console.log(results);
-       res.send(results);
-   });
-   });
+       res.json(results);
+    }else{
+       res.json(error);
+    }
+  });
+});
 
 
-
-
+router.post('/delet_id', function(req, res, next) {
+var queryData=url.parse(req.url,true).query; 
+  connection.query("DELETE  from "+queryData['table']+" WHERE id='"+queryData['id']+"'" ,function(error,results,fields){
+    if(!error){
+      console.log(results);
+       res.json(results);
+    }else{
+       res.json(error);
+    }
+  });
+});
 
 
 
