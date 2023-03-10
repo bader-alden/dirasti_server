@@ -137,7 +137,7 @@ var queryData=url.parse(req.url,true).query;
 
 router.post('/delet_id', function(req, res, next) {
 var queryData=url.parse(req.url,true).query; 
-  connection.query("DELETE  from "+queryData['table']+" WHERE id='"+queryData['id']+"'" ,function(error,results,fields){
+  connection.query("DELETE from "+queryData['table']+" WHERE id='"+queryData['id']+"'" ,function(error,results,fields){
     if(!error){
       console.log(results);
        res.json(results);
