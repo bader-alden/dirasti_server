@@ -53,9 +53,10 @@ connection.query("SELECT * FROM part WHERE subject='"+queryData['subject']+"' an
     console.log(error);
 connection.query("SELECT `is_free` FROM course WHERE id='"+queryData['course']+"' ", function (error, resul) {
     var json_dat = JSON.parse(JSON.stringify(resul))[0]['is_free'];
-    if(json_dat['is_free']=='0'){
-      console.log(error);
-      console.log(result);
+  console.log(error);
+      console.log(resul);
+    if(json_dat['is_free']=='1'){
+    
       res.send(result);
     }else{ 
       connection.query("SELECT `course_file` FROM user WHERE user_id='"+queryData['user_id']+"'", function (error, resultt) {
