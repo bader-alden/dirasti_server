@@ -125,7 +125,7 @@ router.get('/my_course', function(req, res, next) {
          all.push(resulte);
       }
       if( num_of_course == all.length ){
-      
+    
          console.log(all);
          res.send(all)
       }
@@ -143,12 +143,12 @@ router.get('/my_course', function(req, res, next) {
       });
     }else{
         console.log("notfound10");
-        //res.send("notfound10");
+        res.send("notfound10");
+
       }
         console.log("---------------------------")
       }   
     }); 
-
     }); 
 router.get('/exam', function(req, res, next) {
     var queryData=url.parse(req.url,true).query;
