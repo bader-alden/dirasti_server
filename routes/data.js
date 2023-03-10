@@ -9,9 +9,9 @@ var connection = mysql.createConnection({
         database: 'derasti'
 });
 connection.connect();
-router.get('/Coupon_points _of_sale', function(req, res, next) {
+router.get('/Coupon_points_of_sale', function(req, res, next) {
   const queryData = url.parse(req.url, true).query;
-  connection.query("SELECT * FROM Coupon_points _of_sale" ,function(error,results) {
+  connection.query("SELECT * FROM Coupon_points_of_sale" ,function(error,results) {
       console.log(results);
        res.send(results);
       });

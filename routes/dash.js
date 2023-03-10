@@ -66,7 +66,7 @@ router.put('/privacy_policy', function(req, res, next) {
   })
 router.post('/Coupon_points_of_sale', function(req, res, next) {
   const queryData = url.parse(req.url, true).query;
-  connection.query("INSERT INTO Coupon_points _of_sale (`address`, `lat`, `lang`) VALUES ('"+queryData['address']+"','"+queryData['lat']+"','"+queryData['lang']+"')" ,function(error,results) {
+  connection.query("INSERT INTO Coupon_points_of_sale (`address`, `lat`, `lang`) VALUES ('"+queryData['address']+"','"+queryData['lat']+"','"+queryData['lang']+"')" ,function(error,results) {
       console.log(results);
        res.send(results);
       });
@@ -74,7 +74,7 @@ router.post('/Coupon_points_of_sale', function(req, res, next) {
 
 router.delete('/Coupon_points_of_sale', function(req, res, next) {
   const queryData = url.parse(req.url, true).query;
-  connection.query("DELETE FROM Coupon_points _of_sale WHERE id='"+queryData['id']+"'" ,function(error,results) {
+  connection.query("DELETE FROM Coupon_points_of_sale WHERE id='"+queryData['id']+"'" ,function(error,results) {
       console.log(results);
        res.send(results);
       });
@@ -82,7 +82,7 @@ router.delete('/Coupon_points_of_sale', function(req, res, next) {
 
 router.put('/Coupon_points_of_sale', function(req, res, next) {
   const queryData = url.parse(req.url, true).query;
-  connection.query("UPDATE Coupon_points _of_sale SET `address`='"+queryData['address']+"',`lat`='"+queryData['lat']+"' ,`lang`='"+queryData['lang']+"' WHERE id='"+queryData['id']+"'" ,function(error,results) {
+  connection.query("UPDATE Coupon_points_of_sale SET `address`='"+queryData['address']+"',`lat`='"+queryData['lat']+"' ,`lang`='"+queryData['lang']+"' WHERE id='"+queryData['id']+"'" ,function(error,results) {
       console.log(results);
        res.send(results);
       });
