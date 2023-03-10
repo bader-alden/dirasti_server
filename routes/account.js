@@ -62,7 +62,7 @@ router.post('/login_id', function(req, res, next) {
     });
 router.post('/update_account', function(req, res, next) {
     var queryData=url.parse(req.url,true).query;
-    connection.query("UPDATE user SET name ='"+queryData['name']+"', email ='"+queryData['email']+"', mobile_id='"+queryData['mobile_id']+"', is_male= '"+queryData['is_male']+"',grade= '"+queryData['grade']+"' WHERE secret_code='"+queryData['secret_code']+"' ",function(error,results,fields){
+    connection.query("UPDATE user SET name ='"+queryData['name']+"', mobile_id='"+queryData['mobile_id']+"', is_male= '"+queryData['is_male']+"',grade= '"+queryData['grade']+"' WHERE secret_code='"+queryData['secret_code']+"' ",function(error,results,fields){
       console.log(results)  
       console.log(error)  
       if(!error){
@@ -90,7 +90,7 @@ router.post('/signin',async function(req, res, next) {
         console.log(results.length==0);                                       
         console.log(results);                                       
   if(results.length==0){ 
-  await  connection.query("INSERT INTO user (`name`, `email`, `is_male`, `course_file`,`grade`,`mobile_id`,`secret_code`) VALUES ('"+queryData['name']+"','"+queryData['email']+"','"+queryData['is_male']+"',' ','"+queryData['grade']+"', '"+queryData['mobile_id']+"', '"+queryData['secret_code']+"')",async function(error,resullts,fields){
+  await  connection.query("INSERT INTO user (`name`, `is_male`, `course_file`,`grade`,`mobile_id`,`secret_code`) VALUES ('"+queryData['name']+"','"+queryData['is_male']+"',' ','"+queryData['grade']+"', '"+queryData['mobile_id']+"', '"+queryData['secret_code']+"')",async function(error,resullts,fields){
          console.log(error)
          console.log(results) 
    await connection.query("SELECT `user_id` FROM user WHERE mobile_id='"+queryData['mobile_id']+"'",function(error,result,fields){
