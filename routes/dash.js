@@ -113,7 +113,7 @@ router.put('/Social_Media', function(req, res, next) {
 
 router.post('/insert', function(req, res, next) {
 var queryData=url.parse(req.url,true).query; 
- connection.query("INSERT INTO "+queryData['table']+" ("+queryData['sql_key']+") VALUES ("+queryData['sql_value']+")  ",function(error,results,fields){
+ connection.query("INSERT INTO "+queryData['table']+" ("+queryData['sql_key']+") VALUES ("+queryData['sql_value']+")",function(error,results,fields){
     if(!error){
        res.json(results);
     }else{
