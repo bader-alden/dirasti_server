@@ -49,25 +49,28 @@ router.get('/course', function(req, res, next) {
 })
 router.get('/part', function(req, res, next) {
     var queryData = url.parse(req.url, true).query
-  connection.query("SELECT * FROM part WHERE subject='"+queryData['subject']+"' and grade='"+queryData['grade']+"'and teacher_name='"+queryData['teacher_name']+"' and course='"+queryData['course']+"'", function (error, result) {
-      
-  connection.query("SELECT `course_file` FROM user WHERE user_id='"+queryData['user_id']+"'", function (error, resultt) {
-    var json_data = JSON.parse(JSON.stringify(resultt))[0]['course_file']
-   console.log(json_data)
-  connection.query("SELECT * FROM course WHERE is_free='0' ", function (error, resul) {
-     var json_dat = JSON.parse(JSON.stringify(resultt))['is_free']
+connection.query("SELECT * FROM part WHERE subject='"+queryData['subject']+"' and grade='"+queryData['grade']+"'and teacher_name='"+queryData['teacher_name']+"' and course='"+queryData['course']+"'", function (error, result) {
+    console.log(error);
+connection.query("SELECT `is_free` FROM course WHERE id='"+queryData['course']+"' ", function (error, resul) {
+    var json_dat = JSON.parse(JSON.stringify(resul))[0]['is_free'];
     if(json_dat['is_free']=='0'){
       console.log(error);
       console.log(result);
-    }else{   
+      res.send(result);
+    }else{ 
+      connection.query("SELECT `course_file` FROM user WHERE user_id='"+queryData['user_id']+"'", function (error, resultt) {
+    var json_data = JSON.parse(JSON.stringify(resultt))[0]['course_file']
+      console.log(json_data)
   var t = json_data.toString().split(",")
     if(check_course(t,queryData)){
       res.send(result);
+       
     }else {
       res.send("notfound");
     }
+         });
     }
-   });
+ 
       
 })
   });
