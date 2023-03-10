@@ -162,7 +162,17 @@ var queryData=url.parse(req.url,true).query;
   });
 });
 
-
+router.get('/all_user', function(req, res, next) {
+var queryData=url.parse(req.url,true).query; 
+  connection.query("SELECT * FROM user " ,function(error,results,fields){
+    if(!error){
+      console.log(results);
+       res.json(results);
+    }else{
+       res.json(error);
+    }
+  });
+});
 
 
 
