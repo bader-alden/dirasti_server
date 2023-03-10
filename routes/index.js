@@ -182,13 +182,7 @@ router.get('/my_file', function(req, res, next) {
   var queryData = url.parse(req.url, true).query
 connection.query("SELECT * FROM file WHERE subject='"+queryData['subject']+"' and grade='"+queryData['grade']+"'and teacher_name='"+queryData['teacher_name']+"'", function (error, result) {
    var json_data = JSON.parse(JSON.stringify(result))[0];
-  // console.log(error);
-  // console.log(result);
-connection.query("SELECT `is_free` FROM file WHERE id='"+json_data['id']+"' ", function (error, resul) {
-   var json_dat = JSON.parse(JSON.stringify(resul))[0];  
-      console.log(error);
-      console.log(resul);
-      console.log(json_dat);
+      console.log(json_data);
     if(json_dat['is_free']=='1'){
       console.log(result);
       res.send(result);
@@ -225,7 +219,7 @@ function check_file(list , queryData){
      }
   return false;
 }
-    });
+//    });
 
 
   //                                                               🧿 ملك خاص ل اسراء 🧿
