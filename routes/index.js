@@ -181,19 +181,19 @@ router.get('/file', function(req, res, next) {
 router.get('/my_file', function(req, res, next) {
   var queryData = url.parse(req.url, true).query
 connection.query("SELECT * FROM file WHERE subject='"+queryData['subject']+"' and grade='"+queryData['grade']+"'and teacher_name='"+queryData['teacher_name']+"'", function (error, result) {
-console.log(error);
-  var json_dat = JSON.parse(JSON.stringify(result))[0];  
- console.log(json_dat);
-  console.log(result);
-// connection.query("SELECT `is_free` FROM file WHERE id='"+queryData['file']+"' ", function (error, resul) {
-//     var json_dat = JSON.parse(JSON.stringify(resul))[0];  
-//    console.log(error);
-//       console.log(resul);
-//       console.log(json_dat);
-//     if(json_dat['is_free']=='1'){
-//       console.log(result);
-//       res.send(result);
-//     }else{
+   var json_data = JSON.parse(JSON.stringify(result))[0]['id'];
+  // console.log(error);
+  // console.log(result);
+connection.query("SELECT `is_free` FROM file WHERE id='"+json_data['id']+"' ", function (error, resul) {
+   var json_dat = JSON.parse(JSON.stringify(resul))[0];  
+   console.log(error);
+      console.log(resul);
+      console.log(json_dat);
+    if(json_dat['is_free']=='1'){
+      console.log(result);
+      res.send(result);
+   }
+     // else{
 //     connection.query("SELECT `course_file` FROM user WHERE user_id='"+queryData['user_id']+"'", function (error, resultt) {        
 //      var json_data = JSON.parse(JSON.stringify(resultt))[0]['course_file']
 //       console.log(json_data)
@@ -205,7 +205,7 @@ console.log(error);
 //       console.log(queryData)
 //       res.send("notfound");
 //     }
-//         });
+       });
 //       }
 //    });
 });
