@@ -112,6 +112,8 @@ router.get('/my_course', function(req, res, next) {
     var num = m[4] 
       if (parseInt(m[0])==1){
        num_of_course++
+             console.log(" num_of_course     "+num_of_file+"  "+m[0])
+
       }else if (parseInt(m[0])==0) {
         num_of_file++
      console.log(" num_of_file     "+num_of_file+"  "+m[0])
@@ -125,7 +127,6 @@ router.get('/my_course', function(req, res, next) {
          all.push(resulte);
       }
       if( num_of_course == all.length ){
-    
          console.log(all);
          res.send(all)
       }
@@ -143,9 +144,18 @@ router.get('/my_course', function(req, res, next) {
       });
     }else{
         console.log("notfound10");
-        res.send("notfound10");
+      //  res.send("notfound10");
 
       }
+        
+        if(queryData['is_course']==0 && num_of_course ==0 && i+1==my.length|| queryData['is_course']==1&& num_of_file==0 && i+1==my.length){
+          console.log(1+1==my.length)
+          console.log(1)
+          console.log(my.length)
+          console.log(num_of_course)
+          console.log(num_of_file)
+        res.send("notfound10");  
+        }
         console.log("---------------------------")
       }   
     }); 
