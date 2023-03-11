@@ -154,10 +154,10 @@ router.get('/my_course', function(req, res, next) {
         console.log("notfound10");
     //    res.send("notfound10");
       }
-        if(queryData['is_course']==1 && num_of_course==0){
+        if(queryData['is_course']==1 && num_of_course==0 &&i+1==my.length  ){
            res.send("notfound10");
         }
-         if(queryData['is_course']==0 && num_of_file==0){
+         if(queryData['is_course']==0 && num_of_file==0&& i+1==my.length){
            res.send("notfound10");
         }
         console.log("---------------------------")
