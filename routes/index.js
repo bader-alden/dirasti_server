@@ -105,15 +105,22 @@ router.get('/my_course', function(req, res, next) {
     var all = []    //شبها 
     var num_of_course = 0
     var num_of_file = 0
+    if(json_data.toString() ==" "){
+      res.send("notfound10");
+      
+    //  return ;
+    }
       for(var i=0 ;i<my.length ; i++){
     //  console.log(my);
     var m=my[i].split("|")
     var type = m[0]
     var num = m[4] 
+    if(m==" "){
+      console.log(m)
+       continue;
+    }
       if (parseInt(m[0])==1){
        num_of_course++
-             console.log(" num_of_course     "+num_of_file+"  "+m[0])
-
       }else if (parseInt(m[0])==0) {
         num_of_file++
      console.log(" num_of_file     "+num_of_file+"  "+m[0])
@@ -127,6 +134,7 @@ router.get('/my_course', function(req, res, next) {
          all.push(resulte);
       }
       if( num_of_course == all.length ){
+    
          console.log(all);
          res.send(all)
       }
@@ -144,18 +152,9 @@ router.get('/my_course', function(req, res, next) {
       });
     }else{
         console.log("notfound10");
-      //  res.send("notfound10");
+        res.send("notfound10");
 
       }
-        
-        if(queryData['is_course']==0 && num_of_course ==0 && i+1==my.length|| queryData['is_course']==1&& num_of_file==0 && i+1==my.length){
-          console.log(1+1==my.length)
-          console.log(1)
-          console.log(my.length)
-          console.log(num_of_course)
-          console.log(num_of_file)
-        res.send("notfound10");  
-        }
         console.log("---------------------------")
       }   
     }); 
