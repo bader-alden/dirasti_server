@@ -15,6 +15,8 @@ const mysql = require('mysql');
 var server = app.listen((3000),()=>{
     console.log("work in 3000");
 });
+const bodyParser = require('body-parser');
+
 const connection = mysql.createConnection({
     host:'db4free.net',
     user:'derasti',
@@ -31,7 +33,15 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(bodyParser.urlencoded({ extended: true }));
 
+app.use(function(req, res, next) {
+res.header("Access-Control-Allow-Origin", "*");
+res.header("Access-Control-Allow-Credentials", "true");
+res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
+res.header("Access-Control-Allow-Headers", "Access-Control-Allow-Headers, access-control-allow-origin,Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers");
+  next();
+});
 app.use('/index', indexRouter);
 app.use('/notices', noticesRouter);
 app.use('/account', accountRouter);
