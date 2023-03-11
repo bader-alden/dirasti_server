@@ -111,44 +111,6 @@ router.put('/Social_Media', function(req, res, next) {
       });
   })
 
-router.post('/insert', function(req, res, next) {
-var queryData=url.parse(req.url,true).query; 
- connection.query("INSERT INTO "+queryData['table']+" ("+queryData['sql_key']+") VALUES ("+queryData['sql_value']+")",function(error,results,fields){
-    if(!error){
-       res.json(results);
-    }else{
-       res.json(error);
-    }
-  });
-});
-
-router.post('/update', function(req, res, next) {
-var queryData=url.parse(req.url,true).query; 
- connection.query("UPDATE "+queryData['table']+" SET "+queryData['sql_key']+" WHERE id='"+queryData['id']+"'",function(error,results,fields){
-    if(!error){
-      console.log(results);
-       res.json(results);
-    }else{
-       res.json(error);
-    }
-  });
-});
-
-
-router.post('/delet_id', function(req, res, next) {
-var queryData=url.parse(req.url,true).query; 
-  connection.query("DELETE from "+queryData['table']+" WHERE id='"+queryData['id']+"'" ,function(error,results,fields){
-    if(!error){
-      console.log(results);
-       res.json(results);
-    }else{
-       res.json(error);
-    }
-  });
-});
-
-
-
 
 router.post('/user', function(req, res, next) {
 var queryData=url.parse(req.url,true).query; 
@@ -173,6 +135,110 @@ var queryData=url.parse(req.url,true).query;
     }
   });
 });
+
+router.post('/signin', function(req, res, next) {
+var queryData=url.parse(req.url,true).query; 
+  connection.query( "SELECT * FROM dashboard WHERE user= '"+queryData['user']+"' AND pass= '"+queryData['pass']+"'" ,function(error,results,fields){
+      console.log(results);
+      res.json(results);
+  });
+   });
+
+
+router.post('/signid', function(req, res, next) {
+var queryData=url.parse(req.url,true).query; 
+  console.log(queryData);
+  connection.query( "SELECT * FROM dashboard WHERE id= '"+queryData['id']+"'" ,function(error,results,fields){
+      console.log(results);
+       res.json(results);
+  });
+   });
+
+router.post('/change_pass', function(req, res, next) {
+var queryData=url.parse(req.url,true).query; 
+  connection.query( "SELECT * FROM dashboard WHERE id= '"+queryData['id']+"' AND pass= '"+queryData['pass']+"'" ,function(error,results,fields){
+      console.log(results);
+     if(results.length >0){
+        connection.query("UPDATE dashboard SET pass = '"+queryData['new_pass']+"' WHERE id='"+queryData['id']+"'",function(error,results,fields){
+          if(!error){
+            res.send("yes")
+          }
+        });
+     }else{
+       res.send("no")
+     }
+  });
+   });
+
+router.post('/select', function(req, res, next) {
+var queryData=url.parse(req.url,true).query; 
+  connection.query("SELECT "+queryData['sql']+" from "+queryData['table'] ,function(error,results,fields){
+    if(!error){
+      console.log(results);
+       res.json(results);
+    }else{
+       res.json(error);
+    }
+  });
+});
+
+router.post('/select_id', function(req, res, next) {
+var queryData=url.parse(req.url,true).query; 
+  connection.query("SELECT "+queryData['sql']+" from "+queryData['table']+" WHERE id='"+queryData['id']+"'" ,function(error,results,fields){
+    if(!error){
+      console.log(results);
+       res.json(results);
+    }else{
+       res.json(error);
+    }
+  });
+});
+router.post('/insert', function(req, res, next) {
+var queryData=url.parse(req.url,true).query; 
+ connection.query("INSERT INTO "+queryData['table']+" ("+queryData['sql_key']+") VALUES ("+queryData['sql_value']+")  ",function(error,results,fields){
+    if(!error){
+   //   console.log(results);
+       res.json(results);
+    }else{
+       res.json(error);
+    }
+  });
+});
+
+router.post('/insert_id', function(req, res, next) {
+var queryData=url.parse(req.url,true).query; 
+ connection.query("INSERT INTO "+queryData['table']+" ("+queryData['sql_key']+") VALUES ("+queryData['sql_value']+") WHERE id='"+queryData['id']+"'",function(error,results,fields){
+    if(!error){
+      console.log(results);
+       res.json(results);
+    }else{
+       res.json(error);
+    }
+  });
+});
+router.post('/update_id', function(req, res, next) {
+var queryData=url.parse(req.url,true).query; 
+ connection.query("UPDATE "+queryData['table']+" SET "+queryData['sql_key']+" WHERE id='"+queryData['id']+"'",function(error,results,fields){
+    if(!error){
+      console.log(results);
+       res.json(results);
+    }else{
+       res.json(error);
+    }
+  });
+});
+router.post('/delet_id', function(req, res, next) {
+var queryData=url.parse(req.url,true).query; 
+  connection.query("DELETE  from "+queryData['table']+" WHERE id='"+queryData['id']+"'" ,function(error,results,fields){
+    if(!error){
+      console.log(results);
+       res.json(results);
+    }else{
+       res.json(error);
+    }
+  });
+});
+
 
 
 
