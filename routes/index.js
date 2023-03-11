@@ -153,8 +153,13 @@ router.get('/my_course', function(req, res, next) {
     }else{
         console.log("notfound10");
     //    res.send("notfound10");
-
       }
+        if(queryData['is_course']==1 && num_of_course==0){
+           res.send("notfound10");
+        }
+         if(queryData['is_course']==0 && num_of_file==0){
+           res.send("notfound10");
+        }
         console.log("---------------------------")
       }   
     }); 
@@ -190,6 +195,8 @@ router.get('/file', function(req, res, next) {
 router.get('/my_file', function(req, res, next) {
   var queryData = url.parse(req.url, true).query
 connection.query("SELECT * FROM file WHERE subject='"+queryData['subject']+"' and grade='"+queryData['grade']+"'and teacher_name='"+queryData['teacher_name']+"'", function (error, result) {
+  console.log(result)
+  console.log(error)
    var json_dataa = JSON.parse(JSON.stringify(result))[0];
     if(json_dataa['is_free']=='1'){
       console.log(result);
