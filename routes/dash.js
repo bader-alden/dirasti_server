@@ -249,6 +249,17 @@ var queryData=url.parse(req.url,true).query;
     }
   });
 });
+router.post('/delet_id_user', function(req, res, next) {
+var queryData=url.parse(req.url,true).query; 
+  connection.query("DELETE  from "+queryData['table']+" WHERE user_id='"+queryData['id']+"'" ,function(error,results,fields){
+    if(!error){
+      console.log(results);
+       res.json(results);
+    }else{
+       res.json(error);
+    }
+  });
+});
 
 
 
