@@ -6,6 +6,11 @@ var admin = require("firebase-admin");
 /* GET home page. */ 
 
 /// created_at
+var serviceAccount = require("../dirasti-d3528-firebase-adminsdk-avoke-732614516e.json");
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount)
+});
 
 const mysql = require('mysql');
 const connection = mysql.createConnection({
@@ -42,7 +47,7 @@ connection.query("SELECT `gsm_token`,`gsm_token2` FROM user WHERE id="+queryData
         "icon": "myicon",
         "channelId": "high_importance_channel",
       }}, 
-  token: t ?? "",
+   token: t ?? "",
    topic:topic ?? ""
    
     //        /topics/all
@@ -51,18 +56,22 @@ connection.query("SELECT `gsm_token`,`gsm_token2` FROM user WHERE id="+queryData
   .then((response) => {
    res.json(response)
     console.log('Successfully sent message:', response);
-  })
+   connection.query("INSERT INTO `notices`(`id`, `title`, `body`, `user_id`) VALUES ('"queryData['id']"','"queryData['title']"','"queryData['body']"','"queryData['user_id']"')", function(error,results,fields){
+   console,log(error)
+   console,log(results) 
+   });
+   //🙃هون بدي اكتبو 
+ // yes 
+ })
   .catch((error) => {
       res.json(error)
     console.log('Error sending message:', error);
-  });}
+  });
+ }
   
-  
-
-
 });
   });
-
+//شوفي  الinit فوووق
 
 module.exports = router;
   
