@@ -36,6 +36,7 @@ connection.query("SELECT `gsm_token`,`gsm_token2` FROM user WHERE id="+queryData
         "channelId": "high_importance_channel",
       }}, 
   token: t 
+    ///topics/all
 };
  admin.messaging().send(message)
   .then((response) => {
