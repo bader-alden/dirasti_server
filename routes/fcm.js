@@ -20,8 +20,12 @@ connection.connect();
 router.get('/', function(req, res, next) {
 var queryData=url.parse(req.url,true).query;
 connection.query("SELECT `gsm_token`,`gsm_token2` FROM user WHERE id="+queryData['id']+"", function(error,results,fields){
-  console.log("fcm",results)
-  if(results != "" &&results != " " &&results != "[]" &&results != undefined&&results != null) {
+ if(t=pu){
+   
+ }
+  
+  if(results != "" &&results != " " &&results != "[]" &&results != undefined&&results != null) 
+  {
     var json_data = JSON.parse(JSON.stringify(results))[0]
     var t = json_data['gsm_token']+":"+json_data['gsm_token2'];
   const message = {
@@ -36,7 +40,7 @@ connection.query("SELECT `gsm_token`,`gsm_token2` FROM user WHERE id="+queryData
         "channelId": "high_importance_channel",
       }}, 
   token: t 
-    ///topics/all
+    //        /topics/all
 };
  admin.messaging().send(message)
   .then((response) => {
@@ -48,7 +52,10 @@ connection.query("SELECT `gsm_token`,`gsm_token2` FROM user WHERE id="+queryData
     console.log('Error sending message:', error);
   });
   }
-  });
+  
+
+
+});
   });
 
 
