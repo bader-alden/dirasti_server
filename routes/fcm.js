@@ -7,19 +7,19 @@ var admin = require("firebase-admin");
 
 /// created_at
 
-var mysql=require('mysql');
-var connection = mysql.createConnection({
-host:'db4free.net',
-user :'tatbeky',
-password:'aaatatbeky',
-database:'tatbeky'
+const mysql = require('mysql');
+const connection = mysql.createConnection({
+  host: 'db4free.net',
+  user: 'derasti',
+  password: 'derasty123#',
+  database: 'derasti'
 });
 connection.connect();
 
 //const registrationToken = 'cijAcgXuTHmYhsDn89XvJ2:APA91bHleFKQHPCxuB0KSZnNdmV7x9eE0OmwutScoV7yo4qtOB8yj1GuNUNAMTMX5ZbjkQzi7oXicO_pCKZ6UDJhV2ii3UrDuko6wdsezMe7gugqSzHLK5QpHyfgtLDbubdUcGXv0G0f';
-  router.get('/', function(req, res, next) {
+router.get('/', function(req, res, next) {
 var queryData=url.parse(req.url,true).query;
-connection.query("SELECT `gsm_token`,`gsm_token2` FROM users WHERE id="+queryData['id']+"", function(error,results,fields){
+connection.query("SELECT `gsm_token`,`gsm_token2` FROM user WHERE id="+queryData['id']+"", function(error,results,fields){
   console.log("fcm",results)
   if(results != "" &&results != " " &&results != "[]" &&results != undefined&&results != null) {
     var json_data = JSON.parse(JSON.stringify(results))[0]
@@ -27,7 +27,7 @@ connection.query("SELECT `gsm_token`,`gsm_token2` FROM users WHERE id="+queryDat
   const message = {
      'android': {
       "notification": {
-        "title":  "أوكشن السعودية",
+        "title":  "دراستي",
         "body": queryData["body"],
         "sound": "mysound",
         "tag": "alerts",
