@@ -29,7 +29,6 @@ connection.query("SELECT `gsm_token`,`gsm_token2` FROM user WHERE id="+queryData
    var topic = "/topics/all";
    //      /topics/all
  }
-  
   if(results != "" &&results != " " &&results != "[]" &&results != undefined&&results != null) 
   {
     var json_data = JSON.parse(JSON.stringify(results))[0]
@@ -55,10 +54,11 @@ connection.query("SELECT `gsm_token`,`gsm_token2` FROM user WHERE id="+queryData
  admin.messaging().send(message)
   .then((response) => {
    res.json(response)
-    console.log('Successfully sent message:', response);
-   connection.query("INSERT INTO `notices`(`id`, `title`, `body`, `user_id`) VALUES ('"queryData['id']"','"queryData['title']"','"queryData['body']"','"queryData['user_id']"')", function(error,results,fields){
-   console,log(error)
-   console,log(results) 
+   console.log('Successfully sent message:', response);
+   var queryDat=url.parse(req.url,true).query;
+   connection.query("INSERT INTO notices (`title`, `body`, `user_id`) VALUES ('"+queryDat['title']+"','"+queryDat['body']+"','"+queryDat['user_id']+"')", function(error,results,fields){
+   console.log(error)
+   console.log(results) 
    });
    //🙃هون بدي اكتبو 
  // yes 
