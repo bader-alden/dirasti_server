@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var uploadFile = require ('./middelware.js')
+var uploadFile = require ('./middleware.js')
 
 router.post('/uplode' , async (req, res) => {
   try {
