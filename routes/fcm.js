@@ -28,7 +28,7 @@ connection.query("SELECT `gsm_token`,`gsm_token2` FROM user WHERE id="+queryData
   if(results != "" &&results != " " &&results != "[]" &&results != undefined&&results != null) 
   {
     var json_data = JSON.parse(JSON.stringify(results))[0]
-    var t = json_data['gsm_token']+":"+json_data['gsm_token2'];
+    var t = json_data['gsm_token']+":"+json_data['gsm_token2'];  //هاد السطر صح
     }
  if(t !=null)
  { const message = {
