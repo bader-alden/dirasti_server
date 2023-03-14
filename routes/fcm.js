@@ -21,7 +21,7 @@ router.get('/', function(req, res, next) {
 var queryData=url.parse(req.url,true).query;
 connection.query("SELECT `gsm_token`,`gsm_token2` FROM user WHERE id="+queryData['id']+"", function(error,results,fields){
  if(queryData['user_id']=='public'){
-   
+   var topic = "/topics/all";
    //      /topics/all
  }
   
@@ -42,7 +42,9 @@ connection.query("SELECT `gsm_token`,`gsm_token2` FROM user WHERE id="+queryData
         "icon": "myicon",
         "channelId": "high_importance_channel",
       }}, 
-  token: t 
+  token: t ?? "",
+   topic:topic ?? ""
+   
     //        /topics/all
 };
  admin.messaging().send(message)
