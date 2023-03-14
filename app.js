@@ -10,7 +10,7 @@ var noticesRouter = require('./routes/notices');
 var coponsRouter = require('./routes/copons');
 var dataRouter = require('./routes/data');
 var dashRouter = require('./routes/dash');
-var meddelwareRouter = require('./routes/meddelware');
+var middlewareRouter = require('./routes/middleware');
 var upladeRouter = require('./routes/uplade');
 var app = express();
 const mysql = require('mysql');
@@ -50,7 +50,7 @@ app.use('/account', accountRouter);
 app.use('/copons', coponsRouter);
 app.use('/data', dataRouter);
 app.use('/dash', dashRouter);
-app.use('/meddelware', meddelwareRouter);
+app.use('/middleware', middlewareRouter);
 app.use('/uplade', upladeRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
