@@ -29,7 +29,9 @@ connection.query("SELECT `gsm_token`,`gsm_token2` FROM user WHERE id="+queryData
   {
     var json_data = JSON.parse(JSON.stringify(results))[0]
     var t = json_data['gsm_token']+":"+json_data['gsm_token2'];
-  const message = {
+    }
+ if(t !=null)
+ { const message = {
      'android': {
       "notification": {
         "title":  "دراستي",
@@ -51,7 +53,7 @@ connection.query("SELECT `gsm_token`,`gsm_token2` FROM user WHERE id="+queryData
   .catch((error) => {
       res.json(error)
     console.log('Error sending message:', error);
-  });
+  });}
   
   
 
