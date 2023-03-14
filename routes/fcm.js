@@ -20,8 +20,9 @@ connection.connect();
 router.get('/', function(req, res, next) {
 var queryData=url.parse(req.url,true).query;
 connection.query("SELECT `gsm_token`,`gsm_token2` FROM user WHERE id="+queryData['id']+"", function(error,results,fields){
- if(t=pu){
+ if(queryData['user_id']=='public'){
    
+   //      /topics/all
  }
   
   if(results != "" &&results != " " &&results != "[]" &&results != undefined&&results != null) 
@@ -51,7 +52,7 @@ connection.query("SELECT `gsm_token`,`gsm_token2` FROM user WHERE id="+queryData
       res.json(error)
     console.log('Error sending message:', error);
   });
-  }
+  
   
 
 
