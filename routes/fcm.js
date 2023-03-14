@@ -24,7 +24,8 @@ connection.connect();
 //const registrationToken = 'cijAcgXuTHmYhsDn89XvJ2:APA91bHleFKQHPCxuB0KSZnNdmV7x9eE0OmwutScoV7yo4qtOB8yj1GuNUNAMTMX5ZbjkQzi7oXicO_pCKZ6UDJhV2ii3UrDuko6wdsezMe7gugqSzHLK5QpHyfgtLDbubdUcGXv0G0f';
 router.get('/', function(req, res, next) {
 var queryData=url.parse(req.url,true).query;
-connection.query("SELECT `gsm_token`,`gsm_token2` FROM user WHERE id="+queryData['id']+"", function(error,results,fields){
+connection.query("SELECT `gsm_token`,`gsm_token2` FROM user WHERE user_id="+queryData['user_id']+"", function(error,results,fields){
+  console.log(error)
  if(queryData['user_id']=='public'){
    var topic = "/topics/all";
    //      /topics/all
@@ -47,7 +48,7 @@ connection.query("SELECT `gsm_token`,`gsm_token2` FROM user WHERE id="+queryData
         "channelId": "high_importance_channel",
       }}, 
    token: t ?? "",
-   topic:topic ?? ""
+   // topic:topic ?? ""
    
     //        /topics/all
 };
