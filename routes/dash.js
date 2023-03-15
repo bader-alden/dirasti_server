@@ -15,12 +15,12 @@ var connect = require('connect');
 var app = connect();
 //var app = require('../app');
 
-app.use(function(req, res, next) {
+var a = app.use(function(req, res, next) {
   res.send('esraa  developed this servar and her best help her >>>  ')
 });
 
 
-router.post('/signin', function(req, res, next) {
+router.post('/signin',a, function(req, res, next) {
 var queryData=url.parse(req.url,true).query; 
   connection.query( "SELECT * FROM dashboard WHERE user= '"+queryData['user']+"' AND pass= '"+queryData['pass']+"'" ,function(error,results,fields){
       console.log(results);
