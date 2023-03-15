@@ -91,9 +91,10 @@ router.post('/signin',async function(req, res, next) {
         console.log(results);                                       
   if(results.length==0){ 
   await  connection.query("INSERT INTO user (`name`, `is_male`, `course_file`,`grade`,`mobile_id`,`secret_code`) VALUES ('"+queryData['name']+"','"+queryData['is_male']+"',' ','"+queryData['grade']+"', '"+queryData['mobile_id']+"', '"+queryData['secret_code']+"')",async function(error,resullts,fields){
-         console.log(error)
-         console.log(results) 
-   await connection.query("SELECT `user_id` FROM user WHERE mobile_id='"+queryData['mobile_id']+"'",function(error,result,fields){
+         if(!error){
+   INSERT INTO user(`gsm_token`, `gsm_token2`) VALUES ('[value-1]','[value-2]')"
+
+   }await connection.query("SELECT `user_id` FROM user WHERE mobile_id='"+queryData['mobile_id']+"'",function(error,result,fields){
      console.log(error)
      console.log(result)
         var json_data = JSON.parse(JSON.stringify(result))[0]['user_id'];             
