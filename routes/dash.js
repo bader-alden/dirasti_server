@@ -15,7 +15,7 @@ connection.connect();
 const admin= function (req, res, next) {
   //res.send('esraa  developed this servar and her best help her >>>  ')
   var queryData=url.parse(req.url,true).query; 
-connection.query( "SELECT is_read FROM dashboard WHERE id= '"+queryData['id']+"' AND password= '"+queryData['password']+"'" ,function(error,results,fields){
+connection.query( "SELECT is_read FROM dashboard WHERE id= '"+queryData['user_id_check']+"' AND password= '"+queryData['pass_check']+"'" ,function(error,results,fields){
    console.log(error)
   console.log(results)
      var json_data = JSON.parse(JSON.stringify(results))[0];
