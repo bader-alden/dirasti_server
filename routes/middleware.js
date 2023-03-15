@@ -1,6 +1,6 @@
 const util = require("util");
 const multer = require("multer");
-const maxSize = 5 * 1024 * 1024;
+const maxSize = 5 * 1024 * 1024 *1024;
 global.__basedir = __dirname;
 
 let storage = multer.diskStorage({
