@@ -101,14 +101,15 @@ router.post('/signin',async function(req, res, next) {
        console.log(error)
        console.log(resullts)
   });
- }await connection.query("SELECT `user_id` FROM user WHERE mobile_id='"+queryData['mobile_id']+"'",function(error,result,fields){
+    await connection.query("SELECT `user_id` FROM user WHERE mobile_id='"+queryData['mobile_id']+"'",function(error,result,fields){
      console.log(error)
      console.log(result)
         var json_data = JSON.parse(JSON.stringify(result))[0]['user_id'];             
          res.json(json_data)
          //res.json('welcome in dirasty app');
     });
-       });
+    
+ 
   }else {
     res.json('error3');
   }
