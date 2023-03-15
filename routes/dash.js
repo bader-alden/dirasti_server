@@ -81,7 +81,7 @@ var queryData=url.parse(req.url,true).query;
 
 router.post('/signin', function(req, res, next) {
 var queryData=url.parse(req.url,true).query; 
-  connection.query( "SELECT * FROM dashboard WHERE user= '"+queryData['user']+"' AND password= '"+queryData['password']+"'" ,function(error,results,fields){
+  connection.query( "SELECT * FROM dashboard WHERE name= '"+queryData['name']+"' AND password= '"+queryData['password']+"'" ,function(error,results,fields){
       console.log(results);
       res.json(results);
   });
