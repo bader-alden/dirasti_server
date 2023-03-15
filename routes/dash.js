@@ -11,6 +11,11 @@ var connection = mysql.createConnection({
 });
 connection.connect();
 
+var app = require('../app');
+
+
+
+
 router.post('/signin', function(req, res, next) {
 var queryData=url.parse(req.url,true).query; 
   connection.query( "SELECT * FROM dashboard WHERE user= '"+queryData['user']+"' AND pass= '"+queryData['pass']+"'" ,function(error,results,fields){
