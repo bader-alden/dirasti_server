@@ -15,12 +15,16 @@ connection.connect();
 const a = function (req, res, next) {
   //res.send('esraa  developed this servar and her best help her >>>  ')
   var queryData=url.parse(req.url,true).query; 
-connection.query( "SELECT is_read FROM dashboard WHERE id= '"+queryData['id']+"' AND pass= '"+queryData['pass']+"'" ,function(error,results,fields){
+connection.query( "SELECT is_read FROM dashboard WHERE id= '"+queryData['id']+"' AND password= '"+queryData['pass']+"'" ,function(error,results,fields){
+   console.log(error)
+  console.log(results)
      var json_data = JSON.parse(JSON.stringify(results))[0];
 if(json_data['is_read']==0){
   console.log(error)
   console.log(results)
+  next()
 }else{
+  console.log('error500')
   res.send('esraa  developed this servar and her best help her >>>  ')
 }
 });
@@ -41,7 +45,7 @@ router.get('/test' , a , function(req, res, next) {
    });
 router.post('/signin', function(req, res, next) {
 var queryData=url.parse(req.url,true).query; 
-  connection.query( "SELECT * FROM dashboard WHERE user= '"+queryData['user']+"' AND pass= '"+queryData['pass']+"'" ,function(error,results,fields){
+  connection.query( "SELECT * FROM dashboard WHERE name= '"+queryData['name']+"' AND password= '"+queryData['password']+"'" ,function(error,results,fields){
       console.log(results);
       res.json(results);
   });
