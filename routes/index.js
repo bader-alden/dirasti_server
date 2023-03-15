@@ -12,9 +12,9 @@ const connection = mysql.createConnection({
 });
 connection.connect();
 
-router.get('/subject', function(req, res, next) {
+router.get('/banner', function(req, res, next) {
   const queryData = url.parse(req.url, true).query;
-  connection.query("SELECT `banner` FROM privacy_policy WHERE user_id='"+queryData['user_id']+"'" ,function(error,results) {
+  connection.query("SELECT `banner` FROM privacy_policy WHERE id='"+queryData['id']+"'" ,function(error,results) {
       console.log(results);
   })
   });
