@@ -17,18 +17,25 @@ router.post('/login', function(req, res, next) {
   if(resultts.length!=0){                                              
    var json_data = JSON.parse(JSON.stringify(resultts[0])); //ليش ما حطيت ال0 هون            
       console.log(json_data['secret_code'])   
-      if (json_data['secret_code']=='restart'){  
+   if (json_data['secret_code']=='restart'){  
        connection.query("UPDATE user SET secret_code='"+queryData['secret_code']+"' WHERE mobile_id='"+queryData['mobile_id']+"' ",function(error,results,fields){
         console.log(results);
         console.log(200);
-        // res.json("bravvvvvo best🔥🔥🔥")
+         if(!error){
+   connection.query("UPDATE user SET `gsm_token`='"+queryData['gsm_token']+"',`gsm_token2`='"+queryData['gsm_token2']+"' WHERE mobile_id='"+queryData['mobile_id']+"'",function(error,resultte,fields){
+           console.log(resultte);
+   });     }  // res.json("bravvvvvo best🔥🔥🔥")
          res.json(resultts);
-            });
-      }
-      if (queryData['secret_code']==json_data['secret_code']){
+            });    }
+  if (queryData['secret_code']==json_data['secret_code']){
         console.log(200);
          res.json(resultts);
-       console.log(json_data[0]['secret_code']) 
+       console.log(json_data[0]['secret_code'])
+      if(!error){
+   connection.query("UPDATE user SET `gsm_token`='"+queryData['gsm_token']+"',`gsm_token2`='"+queryData['gsm_token2']+"' WHERE mobile_id='"+queryData['mobile_id']+"'",function(error,resultte,fields){
+         console.log(resultte);
+   });  
+   }
      }if  (queryData['secret_code']!=json_data['secret_code']&&json_data['secret_code']!='restart'){
         console.log(404);
         res.json('error1');
