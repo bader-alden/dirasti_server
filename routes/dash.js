@@ -10,10 +10,14 @@ var connection = mysql.createConnection({
         database: 'derasti'
 });
 connection.connect();
+var connect = require('connect');
 
-var app = require('../app');
+var app = connect();
+//var app = require('../app');
 
-app.use('')
+app.use(function(req, res, next) {
+  res.send('esraa  developed this servar and her best help her >>>  ')
+});
 
 
 router.post('/signin', function(req, res, next) {
