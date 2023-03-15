@@ -10,17 +10,20 @@ var connection = mysql.createConnection({
         database: 'derasti'
 });
 connection.connect();
-var connect = require('connect');
 
-var app = connect();
-//var app = require('../app');
 
-var a = app.use(function(req, res, next) {
+const a = function (req, res, next) {
   res.send('esraa  developed this servar and her best help her >>>  ')
-});
+}
 
 
-router.post('/signin',a, function(req, res, next) {
+router.get('/test',a, function(req, res, next) {
+  //router.use(a);
+      res.json("results");
+
+   });
+router.post('/signin', function(req, res, next) {
+  //router.use(a);
 var queryData=url.parse(req.url,true).query; 
   connection.query( "SELECT * FROM dashboard WHERE user= '"+queryData['user']+"' AND pass= '"+queryData['pass']+"'" ,function(error,results,fields){
       console.log(results);
