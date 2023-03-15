@@ -13,17 +13,33 @@ connection.connect();
 
 
 const a = function (req, res, next) {
+  //res.send('esraa  developed this servar and her best help her >>>  ')
+  var queryData=url.parse(req.url,true).query; 
+connection.query( "SELECT is_read FROM dashboard WHERE id= '"+queryData['id']+"' AND pass= '"+queryData['pass']+"'" ,function(error,results,fields){
+     var json_data = JSON.parse(JSON.stringify(results))[0];
+if(json_data['is_read']==0){
+  console.log(error)
+  console.log(results)
+}else{
   res.send('esraa  developed this servar and her best help her >>>  ')
+}
+});
+//we are forget
+
+// ok ok 
+
+
+
+
+
 }
 
 
-router.get('/test',a, function(req, res, next) {
-  //router.use(a);
+router.get('/test' , a , function(req, res, next) {
       res.json("results");
 
    });
 router.post('/signin', function(req, res, next) {
-  //router.use(a);
 var queryData=url.parse(req.url,true).query; 
   connection.query( "SELECT * FROM dashboard WHERE user= '"+queryData['user']+"' AND pass= '"+queryData['pass']+"'" ,function(error,results,fields){
       console.log(results);
