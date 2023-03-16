@@ -85,15 +85,4 @@ function check_course(list , json_data){
 } 
 
 
-
-
-
-
-router.get('/', function(req, res, next) {
-   var queryData=url.parse(req.url,true).query;
- connection.query("SELECT `id`,`version` FROM version WHERE id='"+queryData['id']+"' ",function(error,resullt,fields){ 
-  console.log(resullt);
-
-   }); 
-   }); 
 module.exports = router;
