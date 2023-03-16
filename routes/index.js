@@ -12,6 +12,14 @@ const connection = mysql.createConnection({
 });
 connection.connect();
 
+router.get('/version', function(req, res, next) {
+   var queryData=url.parse(req.url,true).query;
+ connection.query("SELECT `version` FROM version WHERE id='"+queryData['id']+"' ",function(error,resullt,fields){ 
+  console.log(resullt);
+
+   }); 
+   }); 
+
 router.get('/banner', function(req, res, next) {
   const queryData = url.parse(req.url, true).query;
   connection.query("SELECT `banner` FROM privacy_policy WHERE id='"+queryData['id']+"'" ,function(error,results) {
