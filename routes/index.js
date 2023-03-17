@@ -22,7 +22,12 @@ router.get('/version', function(req, res, next) {
 router.get('/calendar', function(req, res, next) {
   const queryData = url.parse(req.url, true).query;
   connection.query("SELECT `subject`, `photo` FROM calendar WHERE grade='"+queryData['grade']+"'" ,function(error,results) {
+       if(!error){
       console.log(results);
+       res.json(results);
+    }else{
+       res.json(error);
+    }
   })
   });
 
