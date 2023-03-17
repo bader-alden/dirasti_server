@@ -23,14 +23,12 @@ var json_data = JSON.parse(JSON.stringify(resullt));
        console.log(m)
       if(m[3]==queryData['id']) {//id teatcher
         console.log(m[3]);
-         m +=all
+        all.push(JSON.parse(JSON.stringify(resullt))[i])
        }
-  // connection.query("SELECT * FROM copon WHERE add_by!=null",function(error,resullt,fields){
- //  }); 
    }
     
  
-// function check_file(list , queryData){
+// functialln check_file(list , queryData){
 //   for(var i=0 ;i<list.length ; i++){
 //       console.log(list);
 //        var m=list[i].split("|")
