@@ -33,8 +33,9 @@ router.get('/calendar', function(req, res, next) {
 
 router.get('/banner', function(req, res, next) {
   const queryData = url.parse(req.url, true).query;
-  connection.query("SELECT `banner` FROM privacy_policy WHERE id='"+queryData['id']+"'" ,function(error,results) {
-      console.log(results);
+  connection.query("SELECT `banner` FROM privacy_policy WHERE id='1'" ,function(error,results) {
+ //     console.log(results);
+    res.send(results)
   })
   });
 router.get('/subject', function(req, res, next) {
