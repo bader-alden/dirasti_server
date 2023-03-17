@@ -18,24 +18,11 @@ router.get('/', function(req, res, next) {
 var json_data = JSON.parse(JSON.stringify(resullt));
     for(var i=0 ;i<json_data.length ; i++){
    var json_dat = JSON.parse(JSON.stringify(resullt))[i]['list_cours'];
-  // console.log(json_data);
-    console.log(json_dat);
+   var l= i.split("|")
+   if(l[])
+   console.log(json_dat);
     }
-   // if(check_course(t,json_data)){
-   //    console.log(json_data)
-     res.send(json_dat);
-   //  }else { 
-   // if (json_datta==json_dat){
-   //      console.log(resullt)
-   //       res.send(resullt)
-   //   }else{
-   //      res.send('error10')
-   //  }
-   //  }
-   // });
-   
-//    });         
-
+ 
 // function check_file(list , queryData){
 //   for(var i=0 ;i<list.length ; i++){
 //       console.log(list);
