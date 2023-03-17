@@ -196,10 +196,10 @@ router.get('/all_tests', function(req, res, next) {
  });
 router.get('/file', function(req, res, next) {
     var queryData = url.parse(req.url, true).query
-    connection.query("SELECT `teacher_name`, `price`, `photo`, `number_of_pages`, `name`, `des` FROM file WHERE subject='"+queryData['subject']+"' and grade='"+queryData['grade']+"'and teacher_name='"+queryData['teacher_name']+"'", function (error, result) {
+    connection.query("SELECT `teacher_name`, `price`, `photo`, `number_of_pages`, `name`, `des` ,`order` FROM file WHERE subject='"+queryData['subject']+"' and grade='"+queryData['grade']+"'and teacher_name='"+queryData['teacher_name']+"'", function (error, result) {
     console.log(error);
       console.log(result);
-      res.json(result)
+      res.json(result) //nice
     });
     });
 
@@ -246,8 +246,7 @@ function check_file(list , queryData){
      }
   return false;
 }
-//    });
 
 
-  //                                                               🧿 ملك خاص ل اسراء 🧿
+  //                                                          🧿 ملك خاص ل اسراء 🧿
 module.exports = router;
