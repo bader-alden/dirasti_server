@@ -1,4 +1,4 @@
- const express = require('express');
+var express = require('express');
 const router = express.Router();
 const url = require('url');
 
@@ -24,13 +24,14 @@ var json_data = JSON.parse(JSON.stringify(resullt));
         all.push(JSON.parse(JSON.stringify(resullt))[i])
        }
    }
-     console.log(all);; 
+     console.log(all);
+    res.render('webpage', { all : all }); 
+    
    }); 
    }); 
 
 
 
-//    res.render('StudentList', { studentList: recordset });
 
 
 module.exports = router;
