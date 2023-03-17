@@ -14,12 +14,13 @@ connection.connect();
 
 router.get('/', function(req, res, next) {
    var queryData=url.parse(req.url,true).query;
- connection.query("SELECT * FROM copon  ",function(error,resullt,fields){ 
+ connection.query("SELECT * FROM copon WHERE is_open=='0' ",function(error,resullt,fields){ 
 var json_data = JSON.parse(JSON.stringify(resullt));
     for(var i=0 ;i<json_data.length ; i++){
    var json_dat = JSON.parse(JSON.stringify(resullt))[i]['list_cours'];
-   if(['list_cours'][3]==queryData['id']) //id teatcher
-   console.log();
+      ؤخ
+   //if(['list_cours'][3]==queryData['id']) //id teatcher
+   console.log(['list_cours'][3]);
        
   // connection.query("SELECT * FROM copon WHERE add_by!=null",function(error,resullt,fields){
  //  }); 
