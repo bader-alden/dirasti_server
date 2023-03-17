@@ -29,11 +29,8 @@ router.get('/', function(req, res, next) {
     }
     }
    });
-   }else{
-  res.send("notfound") 
-}
+   
    });         
-});
 
 function check_file(list , queryData){
   for(var i=0 ;i<list.length ; i++){
