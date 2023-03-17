@@ -15,16 +15,16 @@ connection.connect();
 router.get('/', function(req, res, next) {
    var queryData=url.parse(req.url,true).query;
  connection.query("SELECT * FROM copon WHERE is_open ='0' ",function(error,resullt,fields){ 
-    console.log(error)
-   console.log(resullt)
+   var all=[]
 var json_data = JSON.parse(JSON.stringify(resullt));
     for(var i=0 ;i<json_data.length ; i++){
-       console.log(resullt)
-   var json_dat = JSON.parse(JSON.stringify(resullt));
-       console.log(resullt)
-   //if(['list_cours'][3]==queryData['id']) //id teatcher
-//   console.log(['list_cours'][3]);
-       
+   var json_dat = JSON.parse(JSON.stringify(resullt))[i]['list_cours'];
+        var m=json_dat.split("|")
+       console.log(m)
+      if(m[3]==queryData['id']) {//id teatcher
+        console.log(m[3]);
+         m +=all
+       }
   // connection.query("SELECT * FROM copon WHERE add_by!=null",function(error,resullt,fields){
  //  }); 
    }
