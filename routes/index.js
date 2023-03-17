@@ -21,7 +21,10 @@ router.get('/version', function(req, res, next) {
 
 router.get('/calendar', function(req, res, next) {
   const queryData = url.parse(req.url, true).query;
-  connection.query("SELECT `subject`, `photo` FROM calendar WHERE grade='"+queryData['grade']+"'" ,function(error,results) {
+    connection.query("SELECT grade FROM  user WHERE user_id='"+queryData['user_id']+"'" ,function(error,results) {
+ console.log(results);
+  var json_datas = JSON.parse(JSON.stringify(results));
+  connection.query("SELECT `subject`, `photo` FROM calendar WHERE grade='"+json_datas[0]['grade']+"'" ,function(error,results) {
        if(!error){
       console.log(results);
        res.json(results);
@@ -29,6 +32,7 @@ router.get('/calendar', function(req, res, next) {
        res.json(error);
     }
   })
+    })
   });
 
 router.get('/banner', function(req, res, next) {
