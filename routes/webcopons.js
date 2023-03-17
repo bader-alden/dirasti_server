@@ -18,13 +18,11 @@ router.get('/', function(req, res, next) {
 var json_data = JSON.parse(JSON.stringify(resullt));
     for(var i=0 ;i<json_data.length ; i++){
    var json_dat = JSON.parse(JSON.stringify(resullt))[i]['list_cours'];
-     var l= json_dat.split("|")
-     }  for(var i=0 ;i<l.length ; i++){
-   if(i[3]==queryData['id']) //id teatcher
-   console.log(i);
+   if(['list_cours'][3]==queryData['id']) //id teatcher
+   console.log();
        
-   connection.query("SELECT `id`, `list_cours`, `is_open`, `add_by`, `name_copon`, `uid_copon`, `price`, `grade` FROM copon WHERE 1 ",function(error,resullt,fields){
-   }); 
+  // connection.query("SELECT * FROM copon WHERE add_by!=null",function(error,resullt,fields){
+ //  }); 
    }
     
  
