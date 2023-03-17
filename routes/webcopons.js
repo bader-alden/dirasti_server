@@ -20,26 +20,17 @@ var json_data = JSON.parse(JSON.stringify(resullt));
     for(var i=0 ;i<json_data.length ; i++){
    var json_dat = JSON.parse(JSON.stringify(resullt))[i]['list_cours'];
         var m=json_dat.split("|")
-       console.log(m)
       if(m[3]==queryData['id']) {//id teatcher
-        console.log(m[3]);
         all.push(JSON.parse(JSON.stringify(resullt))[i])
        }
    }
-    
- 
-// functialln check_file(list , queryData){
-//   for(var i=0 ;i<list.length ; i++){
-//       console.log(list);
-//        var m=list[i].split("|")
-// 
-
-  
+     console.log(all);; 
    }); 
    }); 
 
 
 
+//    res.render('StudentList', { studentList: recordset });
 
 
 module.exports = router;
