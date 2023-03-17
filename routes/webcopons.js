@@ -18,11 +18,10 @@ router.get('/', function(req, res, next) {
 var json_data = JSON.parse(JSON.stringify(resullt));
     for(var i=0 ;i<json_data.length ; i++){
    var json_dat = JSON.parse(JSON.stringify(resullt))[i]['list_cours'];
-    
-   for(var ii=0 ;ii<i.length ; ii++){
-    var l= ii.split("|")
-   if(l[3]==queryData['id']) //id teatcher
-   console.log(ii);
+ //  for(var ii=0 ;ii<json_dat.length ; ii++){
+  //  var l= ii.split("|")
+   if(ii[3]==queryData['id']) //id teatcher
+   console.log(ii[3]);
    }
     }
     
