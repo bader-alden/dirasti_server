@@ -206,6 +206,12 @@ var queryData=url.parse(req.url,true).query;
 
 
 
+router.post('/calendar', function(req, res, next) {
+  const queryData = url.parse(req.url, true).query;
+  connection.query("INSERT INTO `calendar`(`grade`, `subject`, `photo`) VALUES ('"+queryData['table']+"','"+queryData['subject']+"','"+queryData['photo']+"') " ,function(error,results) {
+      console.log(results);
+  })
+  });
 
 
 

@@ -19,6 +19,13 @@ router.get('/version', function(req, res, next) {
    }); 
    }); 
 
+router.get('/calendar', function(req, res, next) {
+  const queryData = url.parse(req.url, true).query;
+  connection.query("SELECT `subject`, `photo` FROM calendar WHERE grade='"+queryData['grade']+"'" ,function(error,results) {
+      console.log(results);
+  })
+  });
+
 router.get('/banner', function(req, res, next) {
   const queryData = url.parse(req.url, true).query;
   connection.query("SELECT `banner` FROM privacy_policy WHERE id='"+queryData['id']+"'" ,function(error,results) {
