@@ -102,6 +102,8 @@ connection.query("SELECT `gsm_token`,`gsm_token2` FROM user WHERE user_id="+quer
 };
  admin.messaging().send(message)
   .then((response) => {
+   console.log(t)
+   console.log(json_data)
    res.json(response)
    console.log('Successfully sent message:', response);
    var queryDat=url.parse(req.url,true).query;
