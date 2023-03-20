@@ -213,7 +213,7 @@ router.get('/all_tests', function(req, res, next) {
  });
 router.get('/file', function(req, res, next) {
     var queryData = url.parse(req.url, true).query
-    connection.query("SELECT `teacher_name`, `price`, `photo`, `number_of_pages`, `name`, `des` ,`order` FROM file WHERE subject='"+queryData['subject']+"' and grade='"+queryData['grade']+"'and teacher_name='"+queryData['teacher_name']+"'", function (error, result) {
+    connection.query("SELECT `teacher_name`, `price`, `photo`, `number_of_pages`, `name`, `des` ,`ordero` FROM file WHERE subject='"+queryData['subject']+"' and grade='"+queryData['grade']+"'and teacher_name='"+queryData['teacher_name']+"'", function (error, result) {
     console.log(error);
       console.log(result);
       res.json(result) //nice
