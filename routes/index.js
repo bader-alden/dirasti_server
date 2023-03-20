@@ -252,7 +252,7 @@ function check_file(list , queryData){
   for(var i=0 ;i<list.length ; i++){
       console.log(list);
        var m=list[i].split("|")
-     if(m[0]==queryData['is_course'] &&
+     if(m[0]==0 &&
          m[1]==queryData['grade'] && 
          m[2]==queryData['subject'] && 
          m[3]==queryData['teacher_name'] && 
