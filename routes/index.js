@@ -213,7 +213,7 @@ router.get('/all_tests', function(req, res, next) {
  });
 router.get('/file', function(req, res, next) {
     var queryData = url.parse(req.url, true).query
-    connection.query("SELECT `teacher_name`, `price`, `photo`, `number_of_pages`, `name`, `des` ,`ordero` FROM file WHERE subject='"+queryData['subject']+"' and grade='"+queryData['grade']+"'and teacher_name='"+queryData['teacher_name']+"'", function (error, result) {
+    connection.query("SELECT `teacher_name`, `price`, `photo`, `number_of_pages`, `name`, `des` ,`ordero` ,`id` FROM file WHERE subject='"+queryData['subject']+"' and grade='"+queryData['grade']+"'and teacher_name='"+queryData['teacher_name']+"'", function (error, result) {
     console.log(error);
       console.log(result);
       res.json(result) //nice
@@ -237,6 +237,7 @@ connection.query("SELECT * FROM file WHERE subject='"+queryData['subject']+"' an
       console.log(json_data)
      var t = json_data.toString().split(",")
     if(check_file(t,queryData)){
+      console.log("is gooood")
       res.send(result);
     }else {
       console.log(t)
@@ -252,7 +253,7 @@ function check_file(list , queryData){
   for(var i=0 ;i<list.length ; i++){
       console.log(list);
        var m=list[i].split("|")
-     if(m[0]==0 &&
+     if(m[0]==queryData['is_course'] &&
          m[1]==queryData['grade'] && 
          m[2]==queryData['subject'] && 
          m[3]==queryData['teacher_name'] && 
