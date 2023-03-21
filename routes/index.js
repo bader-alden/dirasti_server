@@ -14,7 +14,7 @@ connection.connect();
 
 router.get('/version', function(req, res, next) {
    var queryData=url.parse(req.url,true).query;
- connection.query("SELECT `version` FROM version WHERE id ='1'",function(error,resullt,fields){ 
+ connection.query("SELECT * FROM version WHERE id ='1'",function(error,resullt,fields){ 
   console.log(resullt);
    }); 
    }); 
