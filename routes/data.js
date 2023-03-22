@@ -12,7 +12,6 @@ connection.connect();
 router.get('/Coupon_points_of_sale', function(req, res, next) {
   const queryData = url.parse(req.url, true).query;
   connection.query("SELECT * FROM Coupon_points_of_sale" ,function(error,results) {
-      console.log(results);
        res.send(results);
       });
   })
@@ -20,7 +19,6 @@ router.get('/Coupon_points_of_sale', function(req, res, next) {
 router.get('/privacy_policy', function(req, res, next) {
   const queryData = url.parse(req.url, true).query;
   connection.query("SELECT * FROM privacy_policy" ,function(error,results) {
-      console.log(results);
        res.send(results);
       });
   })
@@ -28,7 +26,6 @@ router.get('/privacy_policy', function(req, res, next) {
 router.get('/Frequently_questions', function(req, res, next) {
   const queryData = url.parse(req.url, true).query;
   connection.query("SELECT `id`, `questions`, `answer` FROM Frequently_questions" ,function(error,results) {
-      console.log(results);
        res.send(results);
       });
   })
@@ -36,7 +33,6 @@ router.get('/Frequently_questions', function(req, res, next) {
 router.get('/Social_Media', function(req, res, next) {
   const queryData = url.parse(req.url, true).query;
   connection.query("SELECT * FROM Social_Media" ,function(error,results) {
-      console.log(results);
        res.send(results);
       });
   })
@@ -44,7 +40,6 @@ router.get('/Social_Media', function(req, res, next) {
 router.get('/the_support', function(req, res, next) {
   const queryData = url.parse(req.url, true).query;
   connection.query("SELECT * FROM  the_support " ,function(error,results) {
-      console.log(results);
        res.send(results);
       });
   })

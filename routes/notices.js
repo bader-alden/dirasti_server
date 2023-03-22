@@ -13,8 +13,7 @@ connection.connect();
 router.get('/', function(req, res, next) {
    var queryData=url.parse(req.url,true).query;
 connection.query("SELECT * FROM notices WHERE user_id='"+queryData['user_id']+"' or user_id='public' ",function(error,results,fields){
-  console.log(error);
-   console.log(results);
+ 
   res.json(results);
 });
 });
@@ -22,8 +21,7 @@ connection.query("SELECT * FROM notices WHERE user_id='"+queryData['user_id']+"'
 router.post('/', function(req, res, next) {
    var queryData=url.parse(req.url,true).query;
 connection.query("INSERT INTO notices (`title`, `body`,`user_id`) VALUES ('"+queryData['title']+"','"+queryData['body']+"','"+queryData['user_id']+"')" ,function(error,results,fields){
-  console.log(error);
-   console.log(results);
+ 
   res.json(results);
 });
 });

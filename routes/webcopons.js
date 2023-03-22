@@ -24,7 +24,7 @@ var json_data = JSON.parse(JSON.stringify(resullt));
         all.push(JSON.parse(JSON.stringify(resullt))[i])
        }
    }
-     console.log(all);
+   
     res.render('webpage', { all : all }); 
     
    }); 
