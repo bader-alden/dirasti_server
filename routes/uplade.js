@@ -7,7 +7,7 @@ router.post('/uplode' , async (req, res) => {
     if (req.file == undefined) {
       return res.status(400).send({ message: "Please upload a file!" });
     }
-    res.status(200).send("https://ubiquitous-sepia-rainforest.glitch.me/file/" + req.file.originalname);
+    res.status(200).send("https://workable-forest-quotation.glitch.me/file/" + req.file.originalname);
     } catch (err) {
     res.status(500).send({
       message: `Could not upload the file: "aaa". ${err}`,
